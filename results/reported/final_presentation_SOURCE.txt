@@ -1,3 +1,0 @@
-Figures read from: CEROP_Presentation_Slides_Final.pptx
-sha256: 1aa17483b04e8277ce5577ee4c7a3d0db6ee4c5f1353cb8ea3d4b3d311397d8f
-Only numbers are kept. The presentation file is not part of this repo.

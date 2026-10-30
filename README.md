@@ -18,8 +18,6 @@ Held-out test sets: 1,364 firms (44 bankrupt) and 34,393 orders (18,854 late).
 
 Sources: `results/week6_financial_tuning_results.csv` (row "XGBoost - Week 5 published", the official figure) and `results/week6_operations_tuning_results.csv`. Calibrating the operations threshold from 0.50 to 0.40 catches 3,705 more late shipments and adds 4,200 false alarms (`results/week6_operations_confusion_matrices.csv`).
 
-The class report, the final presentation and this repo quote slightly different headline numbers. [The comparison page](https://arthunya.github.io/cerop-console/compare.html) lines them up and explains each difference.
-
 Two things worth knowing before you rerun anything:
 
 - **Reproducibility drift.** The exported XGBoost scores F1 0.533 on a local machine against the reported 0.529, with the same code, data and seed. Library versions differ between the Colab run and the local one. The reported figure stays official. Details in [docs/limitations.md](docs/limitations.md).

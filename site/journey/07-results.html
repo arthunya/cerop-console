@@ -37,7 +37,6 @@
       <li>The exported XGBoost scores F1 <b>{{ fin.reproduced.f1 | f3 }}</b> locally against <b>{{ fin.official.f1 | f3 }}</b> in the report. Same code, same data, same random seed. The difference traces to library versions between Colab and the local environment. With {{ facts.financial.test_bankrupt | int }} positives, a single changed prediction moves F1 noticeably.</li>
       <li>The Week 6 operations notebook picked a threshold of {{ colabCal.threshold | t2 }} on Colab and {{ ops.calibrated_threshold | t2 }} on the local re-run, because the validation F1 values for neighbouring thresholds sit very close together.</li>
     </ul>
-    <p>The class report, the final presentation and this repo each carry a slightly different set of headline numbers. <a href="{{root}}compare.html">The comparison page</a> lines them up and explains each difference.</p>
     <p>Nothing was retrained to force a match. The official financial figure stays the reported one, the operations numbers follow the run that produced the shipped model, and both runs' files are kept. The lesson I took: pin library versions from the first week, and store results with the environment that produced them. This repo now has a pinned <code>requirements.txt</code>.</p>
 
     <h2 id="limits">Limits</h2>

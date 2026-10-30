@@ -52,9 +52,7 @@ def context():
             except ValueError:
                 return v
         report["t" + p.stem[-2:]] = {f"r{i}": {f"c{j}": cell(v) for j, v in enumerate(row)} for i, row in enumerate(table)}
-    cmp = json.loads((DATA / "comparison.json").read_text(encoding="utf-8"))
     return {
-        "cmp": cmp,
         "report": report,
         "fin": fin, "ops": ops, "facts": m["facts"],
         "finrep": {"logreg": rep["Logistic Regression"], "rf": rep["Random Forest"], "xgb": rep["XGBoost"]},

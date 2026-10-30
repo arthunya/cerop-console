@@ -181,59 +181,6 @@ def main():
     assert int(num(report_rows["Rows after cleaning"])) == facts["operations"]["orders"]
 
 
-    # ---------- comparison: final report vs final presentation vs this repo ----------
-    deck = {(r["layer"], r["metric"]): num(r["value"]) for r in rows(RES / "reported" / "final_presentation_figures.csv")}
-    rep_ops = pick(rows(RES / "reported" / "final_report_table_13.csv"), "Model", "Tuned RF at 0.39 (calibrated)")
-    rep_cm = pick(rows(RES / "reported" / "final_report_table_14.csv"), "Model", "Tuned RF at 0.39 (calibrated)")
-    rep_fin = pick(report_cmp, "Model", "XGBoost")
-    rep_data = rows(RES / "reported" / "final_report_table_05.csv")
-    rep_f = pick(rep_data, "Layer", "Financial (Taiwan)")
-    rep_o = pick(rep_data, "Layer", "Operations (DataCo)")
-    rf, ro = financial["official"], operations["week6"][2]
-    rr = financial["reproduced"]
-
-    def entry(name, key, **kw):
-        return dict(source=name, key=key, **kw)
-
-    comparison = {
-        "financial": [
-            entry("Final report", "report", precision=num(rep_fin["Precision"]), recall=num(rep_fin["Recall"]), f1=num(rep_fin["F1-Score"]),
-                  tp=rf["tp"], fp=rf["fp"], fn=rf["fn"], tn=rf["tn"], threshold=0.5,
-                  note="XGBoost refit on all 5,455 training firms (Week 5 published row)"),
-            entry("Final presentation", "deck", precision=deck[("financial", "precision")], recall=deck[("financial", "recall")], f1=deck[("financial", "f1")],
-                  tp=int(deck[("financial", "tp")]), fp=int(deck[("financial", "fp")]), fn=int(deck[("financial", "fn")]), tn=int(deck[("financial", "tn")]), threshold=0.5,
-                  note="Same model settings, refit on the 4,364-firm tuning split (Week 6 'before' row)"),
-            entry("This repo (re-run)", "repo", precision=rr["precision"], recall=rr["recall"], f1=rr["f1"],
-                  tp=rr["tp"], fp=rr["fp"], fn=rr["fn"], tn=rr["tn"], threshold=0.5,
-                  note="Exported model re-evaluated locally; library versions differ from Colab"),
-        ],
-        "operations": [
-            entry("Final report", "report", precision=num(rep_ops["Precision"]), recall=num(rep_ops["Recall"]), f1=num(rep_ops["F1"]),
-                  tp=int(num(rep_cm["TP"])), fp=int(num(rep_cm["FP"])), fn=int(num(rep_cm["FN"])), tn=int(num(rep_cm["TN"])), threshold=num(rep_ops["Threshold"]),
-                  note="Team's Colab run; threshold 0.39"),
-            entry("Final presentation", "deck", precision=deck[("operations", "precision")], recall=deck[("operations", "recall")], f1=deck[("operations", "f1")],
-                  tp=int(deck[("operations", "tp")]), fp=int(deck[("operations", "fp")]), fn=int(deck[("operations", "fn")]), tn=int(deck[("operations", "tn")]), threshold=deck[("operations", "threshold")],
-                  note="Same Colab run as the report"),
-            entry("This repo (re-run)", "repo", precision=ro["precision"], recall=ro["recall"], f1=ro["f1"],
-                  tp=ro["tp"], fp=ro["fp"], fn=ro["fn"], tn=ro["tn"], threshold=ro["threshold"],
-                  note="Saved notebook re-run and the exported model; threshold 0.40"),
-        ],
-        "data": [
-            {"item": "Financial firms: train / test", "report": f"{int(num(rep_f['Train'])):,} / {int(num(rep_f['Test'])):,}", "deck": f"{int(deck[('financial', 'train')]):,} / {int(deck[('financial', 'test')]):,}",
-             "repo": f"{facts['financial']['train']:,} / {facts['financial']['test']:,}"},
-            {"item": "Financial features", "report": str(int(num(rep_f["Features"]))), "deck": str(int(deck[("financial", "features")])), "repo": str(facts["financial"]["features"])},
-            {"item": "Operations orders after cleaning", "report": f"{int(num(rep_o['Rows after cleaning'])):,}", "deck": f"{int(deck[('operations', 'rows_after_cleaning')]):,}", "repo": f"{facts['operations']['orders']:,}"},
-            {"item": "Operations orders: train / test", "report": f"{int(num(rep_o['Train'])):,} / {int(num(rep_o['Test'])):,}", "deck": f"{int(deck[('operations', 'train')]):,} / {int(deck[('operations', 'test')]):,}",
-             "repo": f"{facts['operations']['train']:,} / {facts['operations']['test']:,}"},
-            {"item": "Operations features", "report": f"{int(num(rep_o['Features']))} (Week 4)", "deck": f"{int(deck[('operations', 'features')])} (Week 4)",
-             "repo": f"{facts['operations']['processed_features']} processed, {facts['operations']['model_features']} used by the final model"},
-        ],
-    }
-    for row in comparison["data"]:
-        same = row["report"] == row["deck"] == row["repo"]
-        row["mark"] = "same" if same else "see note"
-    write("comparison.json", comparison)
-
     write("metrics.json", {"financial": financial, "operations": operations, "facts": facts,
                            "financial_histogram": {"bins": bins, **fh}})
 
