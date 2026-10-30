@@ -1,0 +1,9 @@
+case_id,base_rate,feature_1_name,feature_1_contribution,feature_2_name,feature_2_contribution,feature_3_name,feature_3_contribution,feature_4_name,feature_4_contribution,final_score
+OPS-001,0.548184,numeric__Days for shipment (scheduled),-0.074817,Type,-0.059788,Shipping Mode,-0.057262,numeric__Order_Hour,-0.017726,0.339198
+OPS-002,0.548184,numeric__Days for shipment (scheduled),-0.079219,Shipping Mode,-0.062083,numeric__Order_Hour,-0.035938,Type,-0.027807,0.32534
+OPS-003,0.548184,numeric__Days for shipment (scheduled),-0.085713,Shipping Mode,-0.074747,Type,0.036062,numeric__Order_DayOfWeek,0.01167,0.448464
+OPS-004,0.548184,numeric__Days for shipment (scheduled),-0.092317,Shipping Mode,-0.075335,Type,-0.052409,high_cardinality__Order Region,-0.015206,0.309357
+OPS-005,0.548184,numeric__Days for shipment (scheduled),0.115531,Shipping Mode,0.099713,Type,0.025518,numeric__Order_Hour,-0.014829,0.779938
+OPS-006,0.548184,numeric__Days for shipment (scheduled),-0.086442,Shipping Mode,-0.063877,numeric__Order_Hour,0.035405,Type,-0.01778,0.467528
+OPS-007,0.548184,numeric__Days for shipment (scheduled),-0.079254,Shipping Mode,-0.061889,Type,0.027753,numeric__Order_DayOfWeek,0.017455,0.457766
+OPS-008,0.548184,numeric__Days for shipment (scheduled),0.178996,Shipping Mode,0.162671,Type,-0.086593,numeric__Order_Hour,0.019881,0.900423

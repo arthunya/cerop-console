@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+{{> head}}
+<title>Results, limits &amp; lessons · CEROP</title>
+<meta name="description" content="CEROP's final results for both layers, every known limitation, the reproducibility drift between runs, and what would come next.">
+</head>
+<body>
+{{> header}}
+<main id="main">
+<div class="wrap jhead">
+  <span class="eyebrow">Stage 07 · Final</span>
+  <h1>Results, limits &amp; lessons</h1>
+  <p class="q">What did CEROP achieve, what can't it tell you, and what would I do with more time?</p>
+</div>
+<div class="wrap jbody">
+  <aside>{{> journey-steps}}</aside>
+  <article class="prose">
+    <h2>Final numbers</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Layer</th><th>Model</th><th class="n">Threshold</th><th class="n">Precision</th><th class="n">Recall</th><th class="n">F1</th><th class="n">ROC-AUC</th><th class="n">PR-AUC</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td>Financial</td><td>XGBoost</td><td class="n">0.50</td><td class="n">{{ fin.official.precision | f3 }}</td><td class="n">{{ fin.official.recall | f3 }}</td><td class="n">{{ fin.official.f1 | f3 }}</td><td class="n">{{ fin.official.roc_auc | f3 }}</td><td class="n">{{ fin.official.pr_auc | f3 }}</td></tr>
+          <tr><td>Operations</td><td>Random Forest (tuned)</td><td class="n">0.50</td><td class="n">{{ opsDef.precision | f3 }}</td><td class="n">{{ opsDef.recall | f3 }}</td><td class="n">{{ opsDef.f1 | f3 }}</td><td class="n">{{ opsDef.roc_auc | f3 }}</td><td class="n">{{ opsDef.pr_auc | f3 }}</td></tr>
+          <tr class="hl"><td>Operations</td><td>Random Forest (tuned)</td><td class="n">{{ ops.calibrated_threshold | t2 }}</td><td class="n">{{ opsCal.precision | f3 }}</td><td class="n">{{ opsCal.recall | f3 }}</td><td class="n">{{ opsCal.f1 | f3 }}</td><td class="n">{{ opsCal.roc_auc | f3 }}</td><td class="n">{{ opsCal.pr_auc | f3 }}</td></tr>
+        </tbody>
+        <caption>Held-out test sets: {{ facts.financial.test | int }} firms ({{ facts.financial.test_bankrupt | int }} bankrupt) and {{ facts.operations.test | int }} orders ({{ facts.operations.test_late | int }} late). Sources: <code>results/week6_financial_tuning_results.csv</code> (official Week 5 row), <code>results/week6_operations_tuning_results.csv</code>.</caption>
+      </table>
+    </div>
+    <p>In plain terms: the supplier model puts a failing firm above a healthy one about {{ fin.official.roc_auc | pct0 }} of the time and catches about half of bankruptcies at its default setting. The shipment model, once its threshold is set to {{ ops.calibrated_threshold | t2 }}, flags about {{ opsCal.recall | pct0 }} of late orders, and about {{ opsCal.precision | pct0 }} of its flags turn out to be right.</p>
+    <p>The Week 2 proposal set a recall target for the financial layer that this model doesn't reach at 0.50. The Week 6 search for a recall-first setting showed the price: pushing XGBoost's recall to {{ report.t11.r5.c3 | f3 }} dropped precision to {{ report.t11.r5.c2 | f3 }} (Final Report Table 11), so most alarms would be false. That trade-off is a decision for whoever uses the tool, which is why the console shows it rather than hard-coding one answer.</p>
+
+    <h2 id="drift">Reproducibility drift, as a lesson</h2>
+    <p>Re-running the same notebooks on a different machine didn't give identical numbers:</p>
+    <ul>
+      <li>The exported XGBoost scores F1 <b>{{ fin.reproduced.f1 | f3 }}</b> locally against <b>{{ fin.official.f1 | f3 }}</b> in the report. Same code, same data, same random seed. The difference traces to library versions between Colab and the local environment. With {{ facts.financial.test_bankrupt | int }} positives, a single changed prediction moves F1 noticeably.</li>
+      <li>The Week 6 operations notebook picked a threshold of {{ colabCal.threshold | t2 }} on Colab and {{ ops.calibrated_threshold | t2 }} on the local re-run, because the validation F1 values for neighbouring thresholds sit very close together.</li>
+    </ul>
+    <p>Nothing was retrained to force a match. The official financial figure stays the reported one, the operations numbers follow the run that produced the shipped model, and both runs' files are kept. The lesson I took: pin library versions from the first week, and store results with the environment that produced them. This repo now has a pinned <code>requirements.txt</code>.</p>
+
+    <h2 id="limits">Limits</h2>
+    <ul>
+      <li><b>Few failures to learn from.</b> {{ facts.financial.test_bankrupt | int }} bankrupt firms in the test set means wide uncertainty on every financial metric.</li>
+      <li><b>About half of bankruptcies missed at 0.50.</b> Recall {{ fin.official.recall | f3 }}. It's a screening aid, not an automated decision.</li>
+      <li><b>One market, one decade.</b> Taiwanese firms, 1999 to 2009. Not validated on other markets or recent years.</li>
+      <li><b>A teaching dataset for shipments.</b> DataCo is public research data, not a live company feed.</li>
+      <li><b>Two drivers that are one.</b> Scheduled days and shipping mode carry the same information in this data. Read them together.</li>
+      <li><b>Mismatched saved artifacts.</b> The saved operations preprocessor outputs {{ facts.operations.processed_features | int }} columns while the model expects {{ facts.operations.model_features | int }}, and it scales one column differently from the model's training data. Scoring has to work around both.</li>
+      <li><b>Explanations show the top drivers.</b> The rest are summed into one line, which is sometimes large.</li>
+      <li><b>Tuning didn't help either model</b> at the default threshold.</li>
+      <li><b>Prototype only.</b> No monitoring, retraining, access control or live data feed.</li>
+    </ul>
+
+    <h2>What I'd do next</h2>
+    <ul>
+      <li><b>Put error bars on every headline metric.</b> Week 6 bootstrapped the tuning comparison; doing the same for the final scores would show how wide "F1 {{ fin.official.f1 | f3 }}" really is.</li>
+      <li><b>Validate on newer, non-Taiwanese filings,</b> for example public company data from another market, before trusting the financial layer anywhere else.</li>
+      <li><b>Fix the artifact chain:</b> export one pipeline object per layer that goes from raw input to probability, so scoring can't drift from training.</li>
+      <li><b>Choose thresholds from costs,</b> not F1: ask what a missed delay and an unnecessary check actually cost, then pick the line that minimises the total.</li>
+      <li><b>Check the GSCPI's real contribution</b> with an ablation, since it was a design goal from Week 2.</li>
+    </ul>
+
+    <div class="links-pair">
+      <a class="btn sm primary" href="{{root}}reports/CEROP_Final_Report.pdf">Final report (PDF)</a>
+      <a class="btn sm" href="{{root}}deck/">View the deck</a>
+      <a class="btn sm" href="{{root}}console/">Try the demo</a>
+    </div>
+    <nav class="pager" aria-label="Journey pages">
+      <a href="06-explainability.html"><small>Previous</small>← Explainability &amp; demo</a>
+      <a class="next" href="{{root}}resources.html"><small>Next</small>Resources →</a>
+    </nav>
+  </article>
+</div>
+</main>
+{{> footer}}
+</body>
+</html>

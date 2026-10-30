@@ -1,0 +1,4 @@
+Split,Rows,Bankrupt,Rate,Used for
+Tuning fit,"4,364",141,0.0323,Cross-validated hyperparameter search
+Validation,"1,091",35,0.0321,Model choice and threshold calibration
+Test (sealed),"1,364",44,0.0323,One final evaluation

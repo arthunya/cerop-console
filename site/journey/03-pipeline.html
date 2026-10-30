@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+{{> head}}
+<title>Cleaning &amp; pipeline · CEROP</title>
+<meta name="description" content="Week 4 of CEROP: cleaning each layer, removing leakage and an unreliable date tail, merging the GSCPI, and the checks the pipeline had to pass.">
+</head>
+<body>
+{{> header}}
+<main id="main">
+<div class="wrap jhead">
+  <span class="eyebrow">Stage 03 · Week 4</span>
+  <h1>Cleaning &amp; pipeline</h1>
+  <p class="q">How do we turn two messy datasets into model-ready tables without letting the answer slip in?</p>
+</div>
+<div class="wrap jbody">
+  <aside>{{> journey-steps}}</aside>
+  <article class="prose">
+    <h2>What we did, layer by layer</h2>
+    <h3>Financial (Taiwan bankruptcy)</h3>
+    <ul>
+      <li>Capped the lightly damaged ratios at their 99th percentile and dropped the columns where most values were placeholders.</li>
+      <li>Built two composite features from related ratios, such as an average of three return-on-assets measures.</li>
+      <li>Split 80/20 with stratification, so both sides keep the same {{ facts.financial.bankrupt_rate | pct1 }} bankruptcy rate, then scaled using the training split only.</li>
+    </ul>
+    <div class="facts">
+      <div><div class="k">Training firms</div><div class="v">{{ facts.financial.train | int }}</div></div>
+      <div><div class="k">Test firms</div><div class="v">{{ facts.financial.test | int }}</div></div>
+      <div><div class="k">Features</div><div class="v">{{ facts.financial.features | int }}</div></div>
+    </div>
+
+    <h3>Operations (DataCo orders)</h3>
+    <ul>
+      <li>Removed personal data (names, emails, passwords, street addresses), free text, and duplicate ID columns.</li>
+      <li>Removed every field that's only known after delivery: actual shipping days, delivery status and the shipping date.</li>
+      <li>Removed orders from 1 October 2017 onward, the unreliable tail found in Week 3. That took the data from {{ facts.operations.rows_before_cleaning | int }} to {{ facts.operations.orders | int }} rows. This filter runs before the split because it's about data quality, not something learned from the data.</li>
+      <li>Split the order date into year, month, day of week and hour, and joined the GSCPI value for each order's month.</li>
+      <li>Clipped outliers in benefit per order with bounds learned from the training split, then encoded and scaled.</li>
+    </ul>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>{{ report.t04.r0.c0 }}</th><th>{{ report.t04.r0.c1 }}</th><th class="n">{{ report.t04.r0.c2 }}</th></tr></thead>
+        <tbody>
+          <tr><td>{{ report.t04.r1.c0 }}</td><td>{{ report.t04.r1.c1 }}</td><td class="n">{{ report.t04.r1.c2 | int }}</td></tr>
+          <tr><td>{{ report.t04.r2.c0 }}</td><td>{{ report.t04.r2.c1 }}</td><td class="n">{{ report.t04.r2.c2 | int }}</td></tr>
+          <tr><td>{{ report.t04.r3.c0 }}</td><td>{{ report.t04.r3.c1 }}</td><td class="n">{{ report.t04.r3.c2 | int }}</td></tr>
+        </tbody>
+        <caption>How each operations column was encoded. Source: Final Report Table 4.</caption>
+      </table>
+    </div>
+    <div class="facts">
+      <div><div class="k">Training orders</div><div class="v">{{ facts.operations.train | int }}</div></div>
+      <div><div class="k">Test orders</div><div class="v">{{ facts.operations.test | int }}</div></div>
+      <div><div class="k">Processed features</div><div class="v">{{ facts.operations.processed_features | int }}</div></div>
+    </div>
+
+    <h2>The rule that held everything together</h2>
+    <p><b>Split first, then fit.</b> Every step that learns something from data (capping thresholds, clipping bounds, scalers, one-hot vocabularies, target encodings) was fitted on the training split and only applied to the test split. If any of them had seen the test data, the test scores would have been quietly optimistic.</p>
+
+    <h2>Checks the pipeline had to pass</h2>
+    <p>The integration notebook stops with an error unless all of these hold, for both layers:</p>
+    <ul>
+      <li>no missing values in the processed training or test matrices;</li>
+      <li>every value finite (no infinities left over from ratios);</li>
+      <li>training and test matrices have the same columns.</li>
+    </ul>
+    <p class="note">These are the <code>assert</code> statements in notebook 03 (cells 10 and 32). An earlier, superseded pipeline run also left a checks file in the course folder; it isn't used here because it belongs to a different column set.</p>
+
+    <h2>A leak we only caught later</h2>
+    <p>Week 4 kept eight <i>Order Status</i> columns, reasoning that an order's status is known before delivery. In Week 6 the team looked again and judged they could carry information about how the delivery turned out, so they were dropped. The operations model went from {{ facts.operations.processed_features | int }} inputs to {{ facts.operations.model_features | int }}. The Week 5 operations results on the next page were measured before that fix, which is why the final operations numbers come from Week 6.</p>
+
+    <div class="links-pair">
+      <a class="btn sm" href="https://github.com/arthunya/cerop/blob/main/notebooks/03_pipeline_integration.ipynb">View notebook 03</a>
+      <a class="btn sm" href="{{root}}reports/CEROP_Week4_Data_Preparation.pdf">Read the Week 4 report (PDF)</a>
+    </div>
+    <p class="small muted">Per-layer cleaning: <a href="https://github.com/arthunya/cerop/blob/main/notebooks/02a_financial_cleaning.ipynb">02a financial</a> · <a href="https://github.com/arthunya/cerop/blob/main/notebooks/02b_operations_cleaning.ipynb">02b operations</a></p>
+    <nav class="pager" aria-label="Journey pages">
+      <a href="02-data.html"><small>Previous</small>← Data &amp; exploration</a>
+      <a class="next" href="04-model-selection.html"><small>Next</small>Model selection →</a>
+    </nav>
+  </article>
+</div>
+</main>
+{{> footer}}
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+ "financial": {
+  "firms": 6819,
+  "train": 5455,
+  "test": 1364,
+  "bankrupt": 220,
+  "test_bankrupt": 44,
+  "bankrupt_rate": 0.032263,
+  "features": 85
+ },
+ "operations": {
+  "orders": 171962,
+  "train": 137569,
+  "test": 34393,
+  "late": 94268,
+  "test_late": 18854,
+  "late_rate": 0.548191,
+  "processed_features": 35,
+  "model_features": 27
+ }
+}

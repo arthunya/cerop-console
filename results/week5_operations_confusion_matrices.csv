@@ -1,0 +1,4 @@
+Model,TN,FP,FN,TP
+Logistic Regression,14161,1378,8054,10800
+Random Forest,13791,1748,6786,12068
+SVM (linear),14175,1364,8111,10743

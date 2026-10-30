@@ -1,0 +1,17 @@
+Model,Parameter,Value,Search,n_iter,CV,Scoring,Best CV score
+XGBoost - tuned,colsample_bytree,0.8,RandomizedSearchCV,40,5-fold stratified,average_precision,0.4257
+XGBoost - tuned,learning_rate,0.05,RandomizedSearchCV,40,5-fold stratified,average_precision,0.4257
+XGBoost - tuned,max_depth,8,RandomizedSearchCV,40,5-fold stratified,average_precision,0.4257
+XGBoost - tuned,min_child_weight,1,RandomizedSearchCV,40,5-fold stratified,average_precision,0.4257
+XGBoost - tuned,n_estimators,100,RandomizedSearchCV,40,5-fold stratified,average_precision,0.4257
+XGBoost - tuned,scale_pos_weight,10,RandomizedSearchCV,40,5-fold stratified,average_precision,0.4257
+XGBoost - tuned,subsample,0.9,RandomizedSearchCV,40,5-fold stratified,average_precision,0.4257
+Random Forest - tuned,class_weight,balanced,RandomizedSearchCV,40,5-fold stratified,average_precision,0.3994
+Random Forest - tuned,max_depth,,RandomizedSearchCV,40,5-fold stratified,average_precision,0.3994
+Random Forest - tuned,max_features,sqrt,RandomizedSearchCV,40,5-fold stratified,average_precision,0.3994
+Random Forest - tuned,min_samples_leaf,8,RandomizedSearchCV,40,5-fold stratified,average_precision,0.3994
+Random Forest - tuned,min_samples_split,10,RandomizedSearchCV,40,5-fold stratified,average_precision,0.3994
+Random Forest - tuned,n_estimators,800,RandomizedSearchCV,40,5-fold stratified,average_precision,0.3994
+XGBoost - tuned,decision_threshold (F1-optimal),0.3345,validation-split calibration,,,F1,
+Random Forest - tuned,decision_threshold (F1-optimal),0.7915,validation-split calibration,,,F1,
+Stacking (XGB + RF),decision_threshold (F1-optimal),0.949,validation-split calibration,,,F1,

@@ -1,0 +1,7 @@
+Hyperparameter,Selected Value
+n_estimators,500
+max_depth,unlimited
+min_samples_split,5
+min_samples_leaf,1
+max_features,0.5
+Best CV F1 score,0.7051

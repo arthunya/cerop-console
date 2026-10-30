@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CEROP Scoring — Local Simulation</title>
+<style>
+  body { font-family: -apple-system, Segoe UI, Arial, sans-serif; margin: 2rem; background: #fafafa; color: #1a1a1a; }
+  h1 { font-size: 1.4rem; }
+  h2 { font-size: 1.1rem; margin-top: 2rem; }
+  .disclaimer { background: #eef2f7; border-left: 4px solid #4a6fa5; padding: 0.75rem 1rem; margin-bottom: 1.5rem; font-size: 0.95rem; }
+  table { border-collapse: collapse; width: 100%; margin-bottom: 1rem; font-size: 0.92rem; }
+  th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: left; }
+  th { background: #333; color: #fff; }
+  footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #ccc; font-size: 0.85rem; color: #444; }
+  footer p { margin: 0.4rem 0; }
+</style>
+</head>
+<body>
+<h1>CEROP Scoring Output</h1>
+<div class="disclaimer">
+  This is a <strong>local simulation</strong> of the CEROP scoring pipeline, run entirely
+  offline against exported model artifacts. It is <strong>not a live production system</strong>
+  — no data leaves this machine, and no scheduled or automated scoring is occurring.
+  Generated 2026-08-18 03:31:06.
+</div>
+
+<h2>Financial Layer (bankruptcy risk)</h2>
+<table><thead><tr><th>Case ID</th><th>Counterparty</th><th>Risk Score</th><th>Risk Band</th></tr></thead><tbody><tr style="background-color:#fddede;"><td>FIN-006</td><td>Solara Packaging Group</td><td>0.9960</td><td>HIGH</td></tr><tr style="background-color:#fddede;"><td>FIN-007</td><td>Ferrovia Machine Tools</td><td>0.9913</td><td>HIGH</td></tr><tr style="background-color:#dcf5df;"><td>FIN-008</td><td>Bluepeak Electronics</td><td>0.1366</td><td>CLEAR</td></tr><tr style="background-color:#dcf5df;"><td>FIN-003</td><td>Kestrel Textiles Ltd</td><td>0.0010</td><td>CLEAR</td></tr><tr style="background-color:#dcf5df;"><td>FIN-002</td><td>Harborline Freight Co</td><td>0.0001</td><td>CLEAR</td></tr><tr style="background-color:#dcf5df;"><td>FIN-001</td><td>Meridian Alloy Works</td><td>0.0000</td><td>CLEAR</td></tr><tr style="background-color:#dcf5df;"><td>FIN-004</td><td>Pinecrest Components</td><td>0.0000</td><td>CLEAR</td></tr><tr style="background-color:#dcf5df;"><td>FIN-005</td><td>Northgate Instruments</td><td>0.0000</td><td>CLEAR</td></tr></tbody></table>
+
+<h2>Operations Layer (late-delivery risk)</h2>
+<table><thead><tr><th>Case ID</th><th>Order Ref</th><th>Risk Score</th><th>Risk Band</th></tr></thead><tbody><tr style="background-color:#fddede;"><td>OPS-008</td><td>ORD-88360</td><td>0.9004</td><td>HIGH</td></tr><tr style="background-color:#fddede;"><td>OPS-005</td><td>ORD-88302</td><td>0.7799</td><td>HIGH</td></tr><tr style="background-color:#fddede;"><td>OPS-006</td><td>ORD-88318</td><td>0.4675</td><td>HIGH</td></tr><tr style="background-color:#fddede;"><td>OPS-007</td><td>ORD-88345</td><td>0.4578</td><td>HIGH</td></tr><tr style="background-color:#fddede;"><td>OPS-003</td><td>ORD-88257</td><td>0.4485</td><td>HIGH</td></tr><tr style="background-color:#fdf0cc;"><td>OPS-001</td><td>ORD-88214</td><td>0.3392</td><td>WATCH</td></tr><tr style="background-color:#fdf0cc;"><td>OPS-002</td><td>ORD-88231</td><td>0.3253</td><td>WATCH</td></tr><tr style="background-color:#fdf0cc;"><td>OPS-004</td><td>ORD-88269</td><td>0.3094</td><td>WATCH</td></tr></tbody></table>
+
+<footer>
+  <p><strong>Thresholds used:</strong> Financial = 0.50 (Week 5 published configuration, default) &nbsp;|&nbsp;
+  Operations = 0.39 (Week 6 calibrated threshold, not the 0.50 default)</p>
+  <p><strong>Known reproducibility gap (financial model):</strong> cerop_financial_xgb.pkl, re-evaluated in this environment, produces F1 = 0.5333, not the F1 = 0.5287 reported in the Week 5/6 written report and cited on the presentation slides and dashboard. Confirmed root cause: library-version drift between this machine&#x27;s xgboost/scikit-learn and whatever produced the original result (likely Colab) — random_state=42 fixes the RNG seed but not internal algorithm behavior across library versions. The published report/slides/dashboard number (F1=0.5287) stays as the official figure. This live demo shows F1=0.5333 for this specific exported artifact — stated here as a reproducibility lesson, not hidden or apologized for.</p>
+</footer>
+</body>
+</html>

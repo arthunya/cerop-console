@@ -1,0 +1,3 @@
+Feature,Formula,Business Rationale
+Profitability_Composite,"Mean of ROA(A), ROA(B), ROA(C)","Averages three ROA variants into one signal, cutting noise from any single calculation method"
+Compounding_Leverage_Risk,Current Liability to Assets × Borrowing dependency,"Flags firms carrying heavy short-term liabilities while also leaning on borrowing; neither factor alone looks alarming, but together they compound distress risk"

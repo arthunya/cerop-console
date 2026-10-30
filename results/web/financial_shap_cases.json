@@ -1,0 +1,1309 @@
+{
+ "method": "shap.TreeExplainer, interventional, model_output='probability', 100-row training background (random_state=42)",
+ "base_value": 0.0324,
+ "threshold": 0.5,
+ "top_n": 6,
+ "global_mean_abs_shap": [
+  {
+   "feature": "Quick Ratio",
+   "label": "Quick ratio",
+   "value": 0.008377
+  },
+  {
+   "feature": "Total debt/Total net worth",
+   "label": "Total debt / net worth",
+   "value": 0.007517
+  },
+  {
+   "feature": "Persistent EPS in the Last Four Seasons",
+   "label": "EPS, last four seasons",
+   "value": 0.005285
+  },
+  {
+   "feature": "Retained Earnings to Total Assets",
+   "label": "Retained earnings / assets",
+   "value": 0.004952
+  },
+  {
+   "feature": "Profitability_Composite",
+   "label": "Profitability (average of 3 ROA measures)",
+   "value": 0.004115
+  },
+  {
+   "feature": "Borrowing dependency",
+   "label": "Borrowing dependency",
+   "value": 0.003233
+  },
+  {
+   "feature": "Continuous interest rate (after tax)",
+   "label": "Interest rate (after tax)",
+   "value": 0.002993
+  },
+  {
+   "feature": "Non-industry income and expenditure/revenue",
+   "label": "Non-industry income / revenue",
+   "value": 0.002845
+  },
+  {
+   "feature": "Fixed Assets to Assets",
+   "label": "Fixed assets / assets",
+   "value": 0.002393
+  },
+  {
+   "feature": "Allocation rate per person",
+   "label": "Allocation rate per person",
+   "value": 0.002385
+  },
+  {
+   "feature": "Continuous Net Profit Growth Rate",
+   "label": "Net profit growth rate",
+   "value": 0.002319
+  },
+  {
+   "feature": "Total expense/Assets",
+   "label": "Total expense / assets",
+   "value": 0.002256
+  },
+  {
+   "feature": "Net Value Growth Rate",
+   "label": "Net value growth rate",
+   "value": 0.00221
+  },
+  {
+   "feature": "Equity to Long-term Liability",
+   "label": "Equity to Long-term Liability",
+   "value": 0.002069
+  },
+  {
+   "feature": "Cash/Current Liability",
+   "label": "Cash/Current Liability",
+   "value": 0.001973
+  }
+ ],
+ "cases": [
+  {
+   "id": "FIN-T0150",
+   "row": 150,
+   "cell": "TP",
+   "label": 1,
+   "proba": 0.996009,
+   "band": "High",
+   "drivers": [
+    {
+     "feature": "Quick Ratio",
+     "label": "Quick ratio",
+     "contribution": 0.110668,
+     "raw_value": 0.002752
+    },
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": 0.102246,
+     "raw_value": 0.169519
+    },
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": 0.081057,
+     "raw_value": 0.023292
+    },
+    {
+     "feature": "Retained Earnings to Total Assets",
+     "label": "Retained earnings / assets",
+     "contribution": 0.072693,
+     "raw_value": 0.910203
+    },
+    {
+     "feature": "Cash/Total Assets",
+     "label": "Cash / total assets",
+     "contribution": 0.059294,
+     "raw_value": 0.000184
+    },
+    {
+     "feature": "Allocation rate per person",
+     "label": "Allocation rate per person",
+     "contribution": 0.050679,
+     "raw_value": 0.05082
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": 0.486972
+   },
+   "reconciliation_abs_diff": 1.2241602065365953e-08
+  },
+  {
+   "id": "FIN-T0806",
+   "row": 806,
+   "cell": "TP",
+   "label": 1,
+   "proba": 0.58066,
+   "band": "High",
+   "drivers": [
+    {
+     "feature": "Quick Ratio",
+     "label": "Quick ratio",
+     "contribution": 0.124587,
+     "raw_value": 0.000993
+    },
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": 0.106548,
+     "raw_value": 0.019262
+    },
+    {
+     "feature": "Allocation rate per person",
+     "label": "Allocation rate per person",
+     "contribution": 0.044949,
+     "raw_value": 0.066014
+    },
+    {
+     "feature": "Borrowing dependency",
+     "label": "Borrowing dependency",
+     "contribution": 0.043815,
+     "raw_value": 0.389358
+    },
+    {
+     "feature": "Retained Earnings to Total Assets",
+     "label": "Retained earnings / assets",
+     "contribution": 0.043172,
+     "raw_value": 0.926597
+    },
+    {
+     "feature": "Profitability_Composite",
+     "label": "Profitability (average of 3 ROA measures)",
+     "contribution": 0.04316,
+     "raw_value": 0.501026
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": 0.142031
+   },
+   "reconciliation_abs_diff": 3.8789515943715713e-07
+  },
+  {
+   "id": "FIN-T0830",
+   "row": 830,
+   "cell": "TP",
+   "label": 1,
+   "proba": 0.807607,
+   "band": "High",
+   "drivers": [
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": 0.12514,
+     "raw_value": 0.018944
+    },
+    {
+     "feature": "Retained Earnings to Total Assets",
+     "label": "Retained earnings / assets",
+     "contribution": 0.08402,
+     "raw_value": 0.910057
+    },
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": 0.079795,
+     "raw_value": 0.189468
+    },
+    {
+     "feature": "Non-industry income and expenditure/revenue",
+     "label": "Non-industry income / revenue",
+     "contribution": 0.07893,
+     "raw_value": 0.3034
+    },
+    {
+     "feature": "Profitability_Composite",
+     "label": "Profitability (average of 3 ROA measures)",
+     "contribution": 0.058959,
+     "raw_value": 0.457697
+    },
+    {
+     "feature": "Quick Ratio",
+     "label": "Quick ratio",
+     "contribution": 0.051421,
+     "raw_value": 0.004404
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": 0.296943
+   },
+   "reconciliation_abs_diff": 6.05005121556701e-08
+  },
+  {
+   "id": "FIN-T0959",
+   "row": 959,
+   "cell": "TP",
+   "label": 1,
+   "proba": 0.991318,
+   "band": "High",
+   "drivers": [
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": 0.126912,
+     "raw_value": 0.173301
+    },
+    {
+     "feature": "Quick Ratio",
+     "label": "Quick ratio",
+     "contribution": 0.112805,
+     "raw_value": 0.000763
+    },
+    {
+     "feature": "Retained Earnings to Total Assets",
+     "label": "Retained earnings / assets",
+     "contribution": 0.084926,
+     "raw_value": 0.843977
+    },
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": 0.078658,
+     "raw_value": 0.040016
+    },
+    {
+     "feature": "Total Asset Return Growth Rate Ratio",
+     "label": "Total Asset Return Growth Rate Ratio",
+     "contribution": 0.072614,
+     "raw_value": 0.260341
+    },
+    {
+     "feature": "Continuous interest rate (after tax)",
+     "label": "Interest rate (after tax)",
+     "contribution": 0.056198,
+     "raw_value": 0.781061
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": 0.426805
+   },
+   "reconciliation_abs_diff": 5.1841106740724285e-08
+  },
+  {
+   "id": "FIN-T1015",
+   "row": 1015,
+   "cell": "TP",
+   "label": 1,
+   "proba": 0.727048,
+   "band": "High",
+   "drivers": [
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": 0.128578,
+     "raw_value": 0.170842
+    },
+    {
+     "feature": "Quick Ratio",
+     "label": "Quick ratio",
+     "contribution": 0.101859,
+     "raw_value": 0.003512
+    },
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": 0.062131,
+     "raw_value": 0.012241
+    },
+    {
+     "feature": "Retained Earnings to Total Assets",
+     "label": "Retained earnings / assets",
+     "contribution": 0.0576,
+     "raw_value": 0.895213
+    },
+    {
+     "feature": "Profitability_Composite",
+     "label": "Profitability (average of 3 ROA measures)",
+     "contribution": 0.055306,
+     "raw_value": 0.381625
+    },
+    {
+     "feature": "Continuous interest rate (after tax)",
+     "label": "Interest rate (after tax)",
+     "contribution": 0.043923,
+     "raw_value": 0.781151
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": 0.245251
+   },
+   "reconciliation_abs_diff": 1.6304155914248497e-08
+  },
+  {
+   "id": "FIN-T1083",
+   "row": 1083,
+   "cell": "TP",
+   "label": 1,
+   "proba": 0.966347,
+   "band": "High",
+   "drivers": [
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": 0.135592,
+     "raw_value": 0.143708
+    },
+    {
+     "feature": "Quick Ratio",
+     "label": "Quick ratio",
+     "contribution": 0.109402,
+     "raw_value": 0.001714
+    },
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": 0.104341,
+     "raw_value": 0.040016
+    },
+    {
+     "feature": "Retained Earnings to Total Assets",
+     "label": "Retained earnings / assets",
+     "contribution": 0.095386,
+     "raw_value": 0.846495
+    },
+    {
+     "feature": "Total Asset Return Growth Rate Ratio",
+     "label": "Total Asset Return Growth Rate Ratio",
+     "contribution": 0.075316,
+     "raw_value": 0.261558
+    },
+    {
+     "feature": "Profitability_Composite",
+     "label": "Profitability (average of 3 ROA measures)",
+     "contribution": 0.064375,
+     "raw_value": 0.317286
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": 0.349534
+   },
+   "reconciliation_abs_diff": 8.087084235608444e-08
+  },
+  {
+   "id": "FIN-T1103",
+   "row": 1103,
+   "cell": "TP",
+   "label": 1,
+   "proba": 0.820917,
+   "band": "High",
+   "drivers": [
+    {
+     "feature": "Quick Ratio",
+     "label": "Quick ratio",
+     "contribution": 0.128493,
+     "raw_value": 0.002092
+    },
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": 0.113363,
+     "raw_value": 0.016203
+    },
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": 0.106802,
+     "raw_value": 0.179824
+    },
+    {
+     "feature": "Non-industry income and expenditure/revenue",
+     "label": "Non-industry income / revenue",
+     "contribution": 0.065726,
+     "raw_value": 0.303367
+    },
+    {
+     "feature": "Retained Earnings to Total Assets",
+     "label": "Retained earnings / assets",
+     "contribution": 0.056316,
+     "raw_value": 0.908377
+    },
+    {
+     "feature": "Equity to Long-term Liability",
+     "label": "Equity to Long-term Liability",
+     "contribution": 0.054587,
+     "raw_value": 0.134537
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": 0.263232
+   },
+   "reconciliation_abs_diff": 9.989609284222212e-08
+  },
+  {
+   "id": "FIN-T1308",
+   "row": 1308,
+   "cell": "TP",
+   "label": 1,
+   "proba": 0.76373,
+   "band": "High",
+   "drivers": [
+    {
+     "feature": "Quick Ratio",
+     "label": "Quick ratio",
+     "contribution": 0.114273,
+     "raw_value": 0.000405
+    },
+    {
+     "feature": "Revenue per person",
+     "label": "Revenue per person",
+     "contribution": -0.096741,
+     "raw_value": 0.00403
+    },
+    {
+     "feature": "Cash/Total Assets",
+     "label": "Cash / total assets",
+     "contribution": 0.076327,
+     "raw_value": 0.000433
+    },
+    {
+     "feature": "Retained Earnings to Total Assets",
+     "label": "Retained earnings / assets",
+     "contribution": 0.070706,
+     "raw_value": 0.869388
+    },
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": 0.061222,
+     "raw_value": 0.187199
+    },
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": 0.060891,
+     "raw_value": 0.040016
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": 0.444652
+   },
+   "reconciliation_abs_diff": 1.214475814359517e-07
+  },
+  {
+   "id": "FIN-T0248",
+   "row": 248,
+   "cell": "FN",
+   "label": 1,
+   "proba": 0.001545,
+   "band": "Clear",
+   "drivers": [
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": -0.004212,
+     "raw_value": 0.007608
+    },
+    {
+     "feature": "Retained Earnings to Total Assets",
+     "label": "Retained earnings / assets",
+     "contribution": -0.004199,
+     "raw_value": 0.938484
+    },
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": -0.002961,
+     "raw_value": 0.215089
+    },
+    {
+     "feature": "Net Value Growth Rate",
+     "label": "Net value growth rate",
+     "contribution": -0.002628,
+     "raw_value": 0.000444
+    },
+    {
+     "feature": "Fixed Assets to Assets",
+     "label": "Fixed assets / assets",
+     "contribution": -0.002422,
+     "raw_value": 0.162322
+    },
+    {
+     "feature": "Revenue per person",
+     "label": "Revenue per person",
+     "contribution": 0.002359,
+     "raw_value": 0.106749
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": -0.016791
+   },
+   "reconciliation_abs_diff": 5.546821335578045e-11
+  },
+  {
+   "id": "FIN-T0712",
+   "row": 712,
+   "cell": "FN",
+   "label": 1,
+   "proba": 0.196728,
+   "band": "Clear",
+   "drivers": [
+    {
+     "feature": "Accounts Receivable Turnover",
+     "label": "Accounts Receivable Turnover",
+     "contribution": 0.035297,
+     "raw_value": 0.000292
+    },
+    {
+     "feature": "Revenue per person",
+     "label": "Revenue per person",
+     "contribution": -0.033545,
+     "raw_value": 0.000676
+    },
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": 0.025812,
+     "raw_value": 0.197315
+    },
+    {
+     "feature": "Continuous interest rate (after tax)",
+     "label": "Interest rate (after tax)",
+     "contribution": 0.022092,
+     "raw_value": 0.772373
+    },
+    {
+     "feature": "Profitability_Composite",
+     "label": "Profitability (average of 3 ROA measures)",
+     "contribution": 0.017439,
+     "raw_value": 0.438746
+    },
+    {
+     "feature": "Net Value Per Share (B)",
+     "label": "Net Value Per Share (B)",
+     "contribution": 0.016354,
+     "raw_value": 0.151995
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": 0.080878
+   },
+   "reconciliation_abs_diff": 7.327599205186885e-08
+  },
+  {
+   "id": "FIN-T0989",
+   "row": 989,
+   "cell": "FN",
+   "label": 1,
+   "proba": 0.004529,
+   "band": "Clear",
+   "drivers": [
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": -0.006507,
+     "raw_value": 0.0069
+    },
+    {
+     "feature": "Quick Ratio",
+     "label": "Quick ratio",
+     "contribution": -0.006301,
+     "raw_value": 0.005527
+    },
+    {
+     "feature": "Revenue per person",
+     "label": "Revenue per person",
+     "contribution": 0.003904,
+     "raw_value": 0.083989
+    },
+    {
+     "feature": "Net Value Growth Rate",
+     "label": "Net value growth rate",
+     "contribution": -0.002827,
+     "raw_value": 0.000417
+    },
+    {
+     "feature": "Non-industry income and expenditure/revenue",
+     "label": "Non-industry income / revenue",
+     "contribution": 0.002436,
+     "raw_value": 0.30342
+    },
+    {
+     "feature": "Degree of Financial Leverage (DFL)",
+     "label": "Degree of Financial Leverage (DFL)",
+     "contribution": 0.002434,
+     "raw_value": 0.026398
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": -0.021011
+   },
+   "reconciliation_abs_diff": 5.965158783594049e-09
+  },
+  {
+   "id": "FIN-T0990",
+   "row": 990,
+   "cell": "FN",
+   "label": 1,
+   "proba": 0.058181,
+   "band": "Clear",
+   "drivers": [
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": 0.017664,
+     "raw_value": 0.015226
+    },
+    {
+     "feature": "Continuous Net Profit Growth Rate",
+     "label": "Net profit growth rate",
+     "contribution": 0.006393,
+     "raw_value": 0.217454
+    },
+    {
+     "feature": "Equity to Long-term Liability",
+     "label": "Equity to Long-term Liability",
+     "contribution": 0.005918,
+     "raw_value": 0.124509
+    },
+    {
+     "feature": "Profitability_Composite",
+     "label": "Profitability (average of 3 ROA measures)",
+     "contribution": 0.005762,
+     "raw_value": 0.492068
+    },
+    {
+     "feature": "Allocation rate per person",
+     "label": "Allocation rate per person",
+     "contribution": -0.005555,
+     "raw_value": 0.002863
+    },
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": 0.005532,
+     "raw_value": 0.198544
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": -0.009933
+   },
+   "reconciliation_abs_diff": 4.476435322420258e-08
+  },
+  {
+   "id": "FIN-T1231",
+   "row": 1231,
+   "cell": "FN",
+   "label": 1,
+   "proba": 0.00392,
+   "band": "Clear",
+   "drivers": [
+    {
+     "feature": "Total expense/Assets",
+     "label": "Total expense / assets",
+     "contribution": -0.005108,
+     "raw_value": 0.005176
+    },
+    {
+     "feature": "Retained Earnings to Total Assets",
+     "label": "Retained earnings / assets",
+     "contribution": -0.00453,
+     "raw_value": 0.937312
+    },
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": -0.004067,
+     "raw_value": 0.252529
+    },
+    {
+     "feature": "Continuous interest rate (after tax)",
+     "label": "Interest rate (after tax)",
+     "contribution": -0.003886,
+     "raw_value": 0.781813
+    },
+    {
+     "feature": "Operating Profit Rate",
+     "label": "Operating Profit Rate",
+     "contribution": -0.003146,
+     "raw_value": 0.999171
+    },
+    {
+     "feature": "Profitability_Composite",
+     "label": "Profitability (average of 3 ROA measures)",
+     "contribution": -0.002938,
+     "raw_value": 0.537403
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": -0.004804
+   },
+   "reconciliation_abs_diff": 9.963349253266918e-09
+  },
+  {
+   "id": "FIN-T1310",
+   "row": 1310,
+   "cell": "FN",
+   "label": 1,
+   "proba": 0.001388,
+   "band": "Clear",
+   "drivers": [
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": -0.0069,
+     "raw_value": 0.002629
+    },
+    {
+     "feature": "Total expense/Assets",
+     "label": "Total expense / assets",
+     "contribution": -0.004792,
+     "raw_value": 0.008617
+    },
+    {
+     "feature": "Cash/Total Assets",
+     "label": "Cash / total assets",
+     "contribution": 0.003562,
+     "raw_value": 0.004188
+    },
+    {
+     "feature": "Continuous Net Profit Growth Rate",
+     "label": "Net profit growth rate",
+     "contribution": -0.003275,
+     "raw_value": 0.217904
+    },
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": -0.002717,
+     "raw_value": 0.21594
+    },
+    {
+     "feature": "Fixed Assets to Assets",
+     "label": "Fixed assets / assets",
+     "contribution": -0.002494,
+     "raw_value": 0.187754
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": -0.014397
+   },
+   "reconciliation_abs_diff": 3.402861794427059e-09
+  },
+  {
+   "id": "FIN-T0510",
+   "row": 510,
+   "cell": "FP",
+   "label": 0,
+   "proba": 0.957512,
+   "band": "High",
+   "drivers": [
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": 0.137878,
+     "raw_value": 0.17349
+    },
+    {
+     "feature": "Quick Ratio",
+     "label": "Quick ratio",
+     "contribution": 0.134266,
+     "raw_value": 0.00073
+    },
+    {
+     "feature": "Retained Earnings to Total Assets",
+     "label": "Retained earnings / assets",
+     "contribution": 0.090869,
+     "raw_value": 0.871249
+    },
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": 0.084682,
+     "raw_value": 0.020539
+    },
+    {
+     "feature": "Revenue per person",
+     "label": "Revenue per person",
+     "contribution": -0.077815,
+     "raw_value": 0.003322
+    },
+    {
+     "feature": "Continuous interest rate (after tax)",
+     "label": "Interest rate (after tax)",
+     "contribution": 0.063576,
+     "raw_value": 0.780968
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": 0.491656
+   },
+   "reconciliation_abs_diff": 1.4079334254013531e-08
+  },
+  {
+   "id": "FIN-T0515",
+   "row": 515,
+   "cell": "FP",
+   "label": 0,
+   "proba": 0.766716,
+   "band": "High",
+   "drivers": [
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": 0.101057,
+     "raw_value": 0.016332
+    },
+    {
+     "feature": "Quick Ratio",
+     "label": "Quick ratio",
+     "contribution": 0.092791,
+     "raw_value": 0.002569
+    },
+    {
+     "feature": "Retained Earnings to Total Assets",
+     "label": "Retained earnings / assets",
+     "contribution": 0.067699,
+     "raw_value": 0.854337
+    },
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": 0.063039,
+     "raw_value": 0.191264
+    },
+    {
+     "feature": "Continuous interest rate (after tax)",
+     "label": "Interest rate (after tax)",
+     "contribution": 0.059907,
+     "raw_value": 0.78088
+    },
+    {
+     "feature": "Profitability_Composite",
+     "label": "Profitability (average of 3 ROA measures)",
+     "contribution": 0.050649,
+     "raw_value": 0.391175
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": 0.299174
+   },
+   "reconciliation_abs_diff": 2.2243816677480766e-07
+  },
+  {
+   "id": "FIN-T0567",
+   "row": 567,
+   "cell": "FP",
+   "label": 0,
+   "proba": 0.878275,
+   "band": "High",
+   "drivers": [
+    {
+     "feature": "Quick Ratio",
+     "label": "Quick ratio",
+     "contribution": 0.14945,
+     "raw_value": 0.002805
+    },
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": 0.141127,
+     "raw_value": 0.01741
+    },
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": 0.062307,
+     "raw_value": 0.196559
+    },
+    {
+     "feature": "Retained Earnings to Total Assets",
+     "label": "Retained earnings / assets",
+     "contribution": 0.057682,
+     "raw_value": 0.925073
+    },
+    {
+     "feature": "Profitability_Composite",
+     "label": "Profitability (average of 3 ROA measures)",
+     "contribution": 0.055486,
+     "raw_value": 0.482048
+    },
+    {
+     "feature": "Operating Gross Margin",
+     "label": "Operating Gross Margin",
+     "contribution": 0.051043,
+     "raw_value": 0.597421
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": 0.328781
+   },
+   "reconciliation_abs_diff": 1.8885016006553457e-07
+  },
+  {
+   "id": "FIN-T0812",
+   "row": 812,
+   "cell": "FP",
+   "label": 0,
+   "proba": 0.991951,
+   "band": "High",
+   "drivers": [
+    {
+     "feature": "Quick Ratio",
+     "label": "Quick ratio",
+     "contribution": 0.119931,
+     "raw_value": 0.002115
+    },
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": 0.104236,
+     "raw_value": 0.02209
+    },
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": 0.101606,
+     "raw_value": 0.176893
+    },
+    {
+     "feature": "Borrowing dependency",
+     "label": "Borrowing dependency",
+     "contribution": 0.064635,
+     "raw_value": 0.386019
+    },
+    {
+     "feature": "Total Asset Return Growth Rate Ratio",
+     "label": "Total Asset Return Growth Rate Ratio",
+     "contribution": 0.063986,
+     "raw_value": 0.261183
+    },
+    {
+     "feature": "Retained Earnings to Total Assets",
+     "label": "Retained earnings / assets",
+     "contribution": 0.061641,
+     "raw_value": 0.915521
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": 0.443516
+   },
+   "reconciliation_abs_diff": 4.1392960059560835e-08
+  },
+  {
+   "id": "FIN-T0083",
+   "row": 83,
+   "cell": "TN",
+   "label": 0,
+   "proba": 5e-06,
+   "band": "Clear",
+   "drivers": [
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": -0.003457,
+     "raw_value": 0.00246
+    },
+    {
+     "feature": "Quick Ratio",
+     "label": "Quick ratio",
+     "contribution": -0.003334,
+     "raw_value": 0.013721
+    },
+    {
+     "feature": "Continuous Net Profit Growth Rate",
+     "label": "Net profit growth rate",
+     "contribution": -0.0022,
+     "raw_value": 0.21778
+    },
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": -0.001706,
+     "raw_value": 0.226907
+    },
+    {
+     "feature": "Profitability_Composite",
+     "label": "Profitability (average of 3 ROA measures)",
+     "contribution": -0.001647,
+     "raw_value": 0.545945
+    },
+    {
+     "feature": "Fixed Assets to Assets",
+     "label": "Fixed assets / assets",
+     "contribution": -0.001556,
+     "raw_value": 0.144597
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": -0.018493
+   },
+   "reconciliation_abs_diff": 1.2559006612455903e-10
+  },
+  {
+   "id": "FIN-T0375",
+   "row": 375,
+   "cell": "TN",
+   "label": 0,
+   "proba": 1.5e-05,
+   "band": "Clear",
+   "drivers": [
+    {
+     "feature": "Quick Ratio",
+     "label": "Quick ratio",
+     "contribution": -0.003795,
+     "raw_value": 0.0108
+    },
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": -0.003554,
+     "raw_value": 0.001351
+    },
+    {
+     "feature": "Continuous Net Profit Growth Rate",
+     "label": "Net profit growth rate",
+     "contribution": -0.002563,
+     "raw_value": 0.217658
+    },
+    {
+     "feature": "Profitability_Composite",
+     "label": "Profitability (average of 3 ROA measures)",
+     "contribution": -0.002004,
+     "raw_value": 0.548604
+    },
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": -0.001702,
+     "raw_value": 0.221046
+    },
+    {
+     "feature": "Non-industry income and expenditure/revenue",
+     "label": "Non-industry income / revenue",
+     "contribution": -0.001661,
+     "raw_value": 0.303533
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": -0.017106
+   },
+   "reconciliation_abs_diff": 2.3060067050328925e-10
+  },
+  {
+   "id": "FIN-T0748",
+   "row": 748,
+   "cell": "TN",
+   "label": 0,
+   "proba": 3.2e-05,
+   "band": "Clear",
+   "drivers": [
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": -0.004885,
+     "raw_value": 0.002976
+    },
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": -0.002285,
+     "raw_value": 0.217737
+    },
+    {
+     "feature": "Borrowing dependency",
+     "label": "Borrowing dependency",
+     "contribution": -0.002102,
+     "raw_value": 0.372518
+    },
+    {
+     "feature": "Continuous interest rate (after tax)",
+     "label": "Interest rate (after tax)",
+     "contribution": -0.001848,
+     "raw_value": 0.78171
+    },
+    {
+     "feature": "Fixed Assets to Assets",
+     "label": "Fixed assets / assets",
+     "contribution": -0.001806,
+     "raw_value": 0.080007
+    },
+    {
+     "feature": "Retained Earnings to Total Assets",
+     "label": "Retained earnings / assets",
+     "contribution": -0.001802,
+     "raw_value": 0.938568
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": -0.017641
+   },
+   "reconciliation_abs_diff": 1.1444366287971519e-10
+  },
+  {
+   "id": "FIN-T1124",
+   "row": 1124,
+   "cell": "TN",
+   "label": 0,
+   "proba": 0.000224,
+   "band": "Clear",
+   "drivers": [
+    {
+     "feature": "Continuous Net Profit Growth Rate",
+     "label": "Net profit growth rate",
+     "contribution": -0.003724,
+     "raw_value": 0.21765
+    },
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": -0.003604,
+     "raw_value": 0.008956
+    },
+    {
+     "feature": "Quick Ratio",
+     "label": "Quick ratio",
+     "contribution": -0.003338,
+     "raw_value": 0.005051
+    },
+    {
+     "feature": "Profitability_Composite",
+     "label": "Profitability (average of 3 ROA measures)",
+     "contribution": -0.00294,
+     "raw_value": 0.548241
+    },
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": -0.00255,
+     "raw_value": 0.22322
+    },
+    {
+     "feature": "Net Value Growth Rate",
+     "label": "Net value growth rate",
+     "contribution": -0.002144,
+     "raw_value": 0.000467
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": -0.013876
+   },
+   "reconciliation_abs_diff": 1.9755150987288417e-10
+  },
+  {
+   "id": "FIN-T1164",
+   "row": 1164,
+   "cell": "TN",
+   "label": 0,
+   "proba": 1.1e-05,
+   "band": "Clear",
+   "drivers": [
+    {
+     "feature": "Quick Ratio",
+     "label": "Quick ratio",
+     "contribution": -0.004108,
+     "raw_value": 0.007345
+    },
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": -0.003649,
+     "raw_value": 0.005332
+    },
+    {
+     "feature": "Continuous Net Profit Growth Rate",
+     "label": "Net profit growth rate",
+     "contribution": -0.002825,
+     "raw_value": 0.21763
+    },
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": -0.00226,
+     "raw_value": 0.214806
+    },
+    {
+     "feature": "Borrowing dependency",
+     "label": "Borrowing dependency",
+     "contribution": -0.001979,
+     "raw_value": 0.369637
+    },
+    {
+     "feature": "Net Value Growth Rate",
+     "label": "Net value growth rate",
+     "contribution": -0.001365,
+     "raw_value": 0.000446
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": -0.016203
+   },
+   "reconciliation_abs_diff": 1.170937166672381e-10
+  },
+  {
+   "id": "FIN-T1202",
+   "row": 1202,
+   "cell": "TN",
+   "label": 0,
+   "proba": 0.001032,
+   "band": "Clear",
+   "drivers": [
+    {
+     "feature": "Quick Ratio",
+     "label": "Quick ratio",
+     "contribution": -0.005207,
+     "raw_value": 0.009658
+    },
+    {
+     "feature": "Retained Earnings to Total Assets",
+     "label": "Retained earnings / assets",
+     "contribution": -0.004514,
+     "raw_value": 0.940253
+    },
+    {
+     "feature": "Total debt/Total net worth",
+     "label": "Total debt / net worth",
+     "contribution": -0.00401,
+     "raw_value": 0.00458
+    },
+    {
+     "feature": "Borrowing dependency",
+     "label": "Borrowing dependency",
+     "contribution": -0.002594,
+     "raw_value": 0.371336
+    },
+    {
+     "feature": "Persistent EPS in the Last Four Seasons",
+     "label": "EPS, last four seasons",
+     "contribution": -0.002521,
+     "raw_value": 0.221613
+    },
+    {
+     "feature": "Fixed Assets to Assets",
+     "label": "Fixed assets / assets",
+     "contribution": -0.002443,
+     "raw_value": 0.153114
+    }
+   ],
+   "rest": {
+    "label": "79 more factors combined",
+    "contribution": -0.010079
+   },
+   "reconciliation_abs_diff": 2.0361186486850258e-09
+  }
+ ]
+}

@@ -1,0 +1,4 @@
+Tier,# Features,Description
+Minor (< 2% affected),15,"Isolated data-entry errors; correctable by capping at the 99th percentile (e.g., Current Ratio 0.01%, Quick Ratio 0.13%, Cash/Current Liability 0.67%)"
+Borderline (~3% affected),1,Interest-bearing debt interest rate (3.24% of records affected); flagged for closer review before deciding to cap or exclude
+Severe (18–88% affected),8,Majority of records affected; too little reliable data remains to justify imputation

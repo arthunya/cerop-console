@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CEROP · The deck</title>
+<meta name="description" content="CEROP in 14 slides: two models for supplier and shipment risk, how they were built and checked, and what they can't tell you.">
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reset.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+<link rel="stylesheet" href="deck.css">
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+<!-- 1 -->
+<section class="center" data-slide="title">
+  <div class="brandline"><img src="../assets/img/favicon.svg" alt=""><b>CEROP</b></div>
+  <h1>Cross-Border Enterprise Risk &amp; <em>Operations Predictor</em></h1>
+  <p class="lede">Two models, two scores, each with a reason you can read.</p>
+  <p class="small muted" style="margin-top:40px">Graduate machine-learning project · AIT 506, Westcliff University · 2026<br>
+  Arthunya Kanoklertwongse (Aty) with Ankit Kumar, Divya Gopal and Aswin Shriram Thiagarajan</p>
+  <p class="small"><a href="https://arthunya.github.io/cerop/">arthunya.github.io/cerop</a> · <a href="https://arthunya.github.io/cerop/console/">live demo</a></p>
+  <aside class="notes">CEROP is a graduate machine-learning project I built with three classmates. It answers two questions a company buying from abroad keeps asking: will this supplier still be in business, and will this shipment arrive on time? Over the next few minutes I'll show how we built two models for those questions, how we checked them, and where they fall short.</aside>
+</section>
+
+<!-- 2 -->
+<section>
+  <span class="eyebrow">The problem</span>
+  <h2>Cross-border buyers carry <em>two risks</em></h2>
+  <div class="cols" style="margin-top:20px">
+    <div class="card"><h3>A supplier failing</h3><p>Owned by credit and procurement. They read balance sheets and decide whether to extend terms or renew a contract.</p></div>
+    <div class="card"><h3>Goods arriving late</h3><p>Owned by logistics. They watch orders and decide where to add buffer stock or chase a carrier.</p></div>
+  </div>
+  <p style="margin-top:40px">Commercial risk scores exist, but they're paid for, refreshed every so often, and rarely say <i>why</i> a score is what it is.</p>
+  <aside class="notes">The two risks sit with different teams. A credit analyst worries about whether a supplier survives the year. A logistics planner worries about this week's shipment. Commercial tools already score suppliers, which shows the need is real, but they are proprietary and mostly opaque. We wanted to see how far public data and transparent methods could get.</aside>
+</section>
+
+<!-- 3 -->
+<section>
+  <span class="eyebrow">What CEROP does</span>
+  <h2>Two independent models, <em>on purpose</em></h2>
+  <div class="cols">
+    <div class="card"><h3>Supplier risk</h3><p>XGBoost on {{ facts.financial.features | int }} financial ratios. Output: the chance a firm goes bankrupt, plus the factors behind it.</p></div>
+    <div class="card"><h3>Shipment delay</h3><p>Random Forest on {{ facts.operations.model_features | int }} order features. Output: the chance an order arrives late, plus the factors behind it.</p></div>
+  </div>
+  <div class="callout" style="margin-top:40px">They're deliberately <b>not</b> merged. A solvent supplier can still ship late, and a failing one can ship on time right up to the end. One blended number would hide what each team needs to see.</div>
+  <aside class="notes">CEROP keeps the two answers apart. Each model is trained on its own data, judged with its own metric, and shown to its own audience. We considered a single combined score and rejected it, because averaging a financial signal with a delivery signal hides exactly the detail each team acts on.</aside>
+</section>
+
+<!-- 4 -->
+<section>
+  <span class="eyebrow">Data</span>
+  <h2>Three public datasets, <em>two very different balances</em></h2>
+  <div class="tiles">
+    <div class="tile"><div class="k">Taiwan bankruptcy (UCI)</div><div class="v">{{ facts.financial.firms | int }}</div><div class="m">firms, 1999–2009; {{ facts.financial.bankrupt_rate | pct1 }} went bankrupt</div></div>
+    <div class="tile"><div class="k">DataCo supply chain (Mendeley)</div><div class="v">{{ facts.operations.orders | int }}</div><div class="m">orders after cleaning; {{ facts.operations.late_rate | pct0 }} arrived late</div></div>
+    <div class="tile"><div class="k">NY Fed GSCPI</div><div class="v">monthly</div><div class="m">global supply-chain pressure, joined to each order's month</div></div>
+  </div>
+  <div class="chart" data-chart="imbalance" style="max-width:1300px"></div>
+  <p class="src">Counted from the label files: <code>results/web/dataset_facts.json</code> (notebook 07).</p>
+  <aside class="notes">Three public datasets. The Taiwan bankruptcy data has about seven thousand firms, and only around three percent failed, so finding failures is a rare-event problem. The DataCo shipments are the opposite: more than half arrived late. That difference shaped everything, from the metrics we chose to how we set thresholds.</aside>
+</section>
+
+<!-- 5 -->
+<section>
+  <span class="eyebrow">Pipeline</span>
+  <h2>From raw data to a score <em>you can question</em></h2>
+  <ol class="pipe">
+    <li><b>Data</b>three public sources</li>
+    <li><b>Cleaning</b>sentinel values, IDs and free text out</li>
+    <li><b>Leakage checks</b>nothing known only after delivery</li>
+    <li><b>Model selection</b>three candidates per layer</li>
+    <li><b>Tuning &amp; threshold</b>search, then calibrate</li>
+    <li><b>Export</b>saved once, loaded read-only</li>
+    <li><b>Scoring + SHAP</b>every explanation adds up</li>
+    <li><b>Console</b>try it in a browser</li>
+  </ol>
+  <p style="margin-top:36px">One rule throughout: <b>split first, then fit.</b> Scalers, encoders and clipping bounds learn from training data only.</p>
+  <aside class="notes">Both layers follow the same eight steps. The one rule that held it together was to split the data before fitting anything. Every scaler, encoder and clipping bound learned from the training split only. If any of them had seen the test data, our test scores would have been quietly optimistic.</aside>
+</section>
+
+<!-- 6 -->
+<section>
+  <span class="eyebrow">Catching leakage</span>
+  <h2>A model that knows the answer <em>looks great and fails</em></h2>
+  <ul>
+    <li><b>Actual shipping days</b> and <b>delivery status</b> were the strongest predictors of lateness, and both are only known after delivery. Removed in Week 4.</li>
+    <li><b>Order Status:</b> kept in Week 4, then judged a possible leak in Week 6 and dropped, taking the model from {{ facts.operations.processed_features | int }} to {{ facts.operations.model_features | int }} inputs.</li>
+    <li><b>An unreliable tail:</b> orders from October 2017 on behaved erratically, so {{ derived.ops_rows_removed | int }} rows were removed before the split.</li>
+    <li><b>Checks that must pass</b> before any model runs: no missing values, every value finite, train and test with the same columns.</li>
+  </ul>
+  <p class="src">Notebook 03 (asserts in cells 10 and 32); row counts from Final Report Table 5.</p>
+  <aside class="notes">Leakage is the most common way a student project fools itself. The column most correlated with lateness was the number of days the shipment actually took, which you only know afterwards. We removed it, removed the delivery status, and later dropped the Order Status columns too. We also cut an unreliable stretch of data at the end of 2017.</aside>
+</section>
+
+<!-- 7 -->
+<section>
+  <span class="eyebrow">Choosing the financial model</span>
+  <h2>Why <em>97% accuracy</em> is the wrong metric</h2>
+  <div class="cols w">
+    <div>
+      <div class="chart" data-chart="fin-models"></div>
+      <p class="src">Test set, threshold 0.50. Final Report Table 7.</p>
+    </div>
+    <div>
+      <p>A model that calls every firm safe would be <b>{{ derived.always_no_accuracy | pct1 }}</b> accurate on our test set and catch nothing.</p>
+      <p>So we compared recall, precision and F1. Logistic Regression catches the most failures (recall {{ finrep.logreg.recall | f3 }}) but most of its alarms are wrong (precision {{ finrep.logreg.precision | f3 }}).</p>
+      <p><b>XGBoost</b> has the best balance: F1 {{ finrep.xgb.f1 | f3 }}, ROC-AUC {{ finrep.xgb.roc_auc | f3 }}.</p>
+    </div>
+  </div>
+  <aside class="notes">With three percent positives, accuracy is meaningless: always saying no scores nearly ninety-seven percent. So we compared the models on recall, precision and F1. Logistic Regression catches the most failures but floods the analyst with false alarms. XGBoost gave the best balance, with Random Forest close behind as a fallback.</aside>
+</section>
+
+<!-- 8 -->
+<section>
+  <span class="eyebrow">Financial result</span>
+  <h2>XGBoost on {{ facts.financial.test | int }} unseen firms</h2>
+  <div class="cols">
+    <div class="cm" role="table" aria-label="XGBoost confusion matrix">
+      <div class="h"></div><div class="h">Said solvent</div><div class="h">Said bankrupt</div>
+      <div class="v">Really solvent</div><div class="c"><b>{{ fin.official.tn | int }}</b><span>cleared</span></div><div class="c miss"><b>{{ fin.official.fp | int }}</b><span>false alarms</span></div>
+      <div class="v">Really bankrupt</div><div class="c miss"><b>{{ fin.official.fn | int }}</b><span>missed</span></div><div class="c hit"><b>{{ fin.official.tp | int }}</b><span>caught</span></div>
+    </div>
+    <div>
+      <div class="tiles" style="grid-template-columns:1fr 1fr;margin-top:0">
+        <div class="tile"><div class="k">F1</div><div class="v">{{ fin.official.f1 | f3 }}</div></div>
+        <div class="tile"><div class="k">ROC-AUC</div><div class="v">{{ fin.official.roc_auc | f3 }}</div></div>
+      </div>
+      <p>For a credit analyst: it caught {{ fin.official.tp | int }} of {{ facts.financial.test_bankrupt | int }} bankruptcies, and {{ fin.official.tp | int }} of its {{ derived.fin_flagged | int }} flags were real. A strong pointer to which files to read first, not a decision on its own.</p>
+    </div>
+  </div>
+  <p class="src">Official result: <code>results/week6_financial_tuning_results.csv</code>, row "XGBoost - Week 5 published".</p>
+  <aside class="notes">On the test set, XGBoost caught about half the bankruptcies, and roughly half of its alarms were real. Its ranking is strong: a failing firm scores above a healthy one about ninety-five percent of the time. For an analyst, that makes it a good way to order a review queue, not something to approve or reject suppliers by itself.</aside>
+</section>
+
+<!-- 9 -->
+<section>
+  <span class="eyebrow">Week 6</span>
+  <h2>Tuning didn't help, <em>and that's a finding</em></h2>
+  <table>
+    <thead><tr><th>Layer</th><th>Configuration</th><th class="n">F1 at 0.50</th></tr></thead>
+    <tbody>
+      <tr><td>Financial</td><td>Week 5 settings (tuning split)</td><td class="n">{{ fin.tuning.before.f1 | f3 }}</td></tr>
+      <tr><td>Financial</td><td>Tuned XGBoost (same split)</td><td class="n">{{ fin.tuning.after.f1 | f3 }}</td></tr>
+      <tr><td>Operations</td><td>Baseline Random Forest</td><td class="n">{{ opsBase.f1 | f3 }}</td></tr>
+      <tr><td>Operations</td><td>Tuned Random Forest</td><td class="n">{{ opsDef.f1 | f3 }}</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:30px">A bootstrap over {{ fin.tuning.bootstrap.n_resamples | int }} resamples put the financial change in PR-AUC between {{ fin.tuning.bootstrap.ci_low | f3 }} and {{ fin.tuning.bootstrap.ci_high | f3 }}: indistinguishable from noise. We kept the Week 5 model.</p>
+  <p class="src"><code>results/week6_financial_tuning_results.csv</code>, <code>results/week6_operations_tuning_results.csv</code>, <code>results/week6_financial_metrics.json</code>.</p>
+  <aside class="notes">We expected hyperparameter search to help. It didn't, on either layer, at the default threshold. Rather than bury that, we checked whether the financial drop was even real: a bootstrap interval spans zero, so it's noise. We kept the simpler Week 5 model. The real gain came from somewhere else, which is the next slide.</aside>
+</section>
+
+<!-- 10 -->
+<section>
+  <span class="eyebrow">Threshold</span>
+  <h2>The threshold is a <em>business decision</em></h2>
+  <div class="cols w">
+    <div>
+      <div class="chart" data-chart="ops-threshold"></div>
+      <p class="src">Validation curve: <code>results/week6_operations_threshold_results.csv</code>.</p>
+    </div>
+    <div>
+      <p>Moving the shipment model's line from 0.50 to <b>{{ ops.calibrated_threshold | t2 }}</b>:</p>
+      <div class="tiles" style="grid-template-columns:1fr 1fr;margin:8px 0 18px">
+        <div class="tile"><div class="k">Late orders caught</div><div class="v">{{ ops.extra_caught | plus }}</div></div>
+        <div class="tile"><div class="k">False alarms</div><div class="v">{{ ops.extra_false_alarms | plus }}</div></div>
+      </div>
+      <p>Recall {{ opsCal.recall | f3 }}, F1 {{ opsCal.f1 | f3 }} on {{ facts.operations.test | int }} test orders. Whether that trade is worth it depends on what a missed delay costs.</p>
+    </div>
+  </div>
+  <aside class="notes">A model gives a probability. Calling an order late at fifty percent is just a convention. We chose the line on a validation set, picking the best F1, which landed at 0.40. On the test set that caught about thirty-seven hundred more late shipments and raised about forty-two hundred more false alarms. The console lets you move that line yourself.</aside>
+</section>
+
+<!-- 11 -->
+<section>
+  <span class="eyebrow">Explaining each case</span>
+  <h2>Real SHAP, <em>checked to add up</em></h2>
+  <div class="cols">
+    <div class="card why" id="why-fin"></div>
+    <div class="card why" id="why-ops"></div>
+  </div>
+  <p class="small" style="margin-top:20px">For every case shown, the starting point plus all feature contributions equals the score within 1e-6. Scheduled days and shipping mode carry the same information in this data, so read them together.</p>
+  <p class="src"><code>results/web/financial_shap_cases.json</code>, <code>operations_shap_cases.json</code> (notebook 07). Numbers are percentage points.</p>
+  <aside class="notes">Every score comes with a reason. These are SHAP values computed from the exported model files, in the same units as the score. Before a case is shown, we check that the starting point plus every contribution adds up to the score. The top drivers rarely explain everything, so the remainder always gets its own line.</aside>
+</section>
+
+<!-- 12 -->
+<section>
+  <span class="eyebrow">The live console</span>
+  <h2>Try it on real <em>held-out cases</em></h2>
+  <div class="shots">
+    <img src="../assets/img/console-supplier-light.png" alt="Supplier risk tab with a SHAP explanation">
+    <img src="../assets/img/console-overview-light.png" alt="Shipment threshold explorer">
+  </div>
+  <div class="qr">
+    <div id="qr" aria-hidden="true"></div>
+    <div><p style="margin:0">Open the console</p><p style="margin:0"><a href="https://arthunya.github.io/cerop/console/">arthunya.github.io/cerop/console</a></p>
+    <p class="small muted" style="margin:6px 0 0">Browse test cases, drag the shipment threshold, change a supplier's ratios.</p></div>
+  </div>
+  <aside class="notes">The Risk Console runs in any browser. You can browse real test firms and orders, see why each was scored the way it was, drag the shipment threshold, and change a supplier's ratios to see its score move. The browser version of the financial model was checked against Python on every test firm before it shipped.</aside>
+</section>
+
+<!-- 13 -->
+<section>
+  <span class="eyebrow">Limits and lessons</span>
+  <h2>What this <em>can't</em> tell you</h2>
+  <div class="cols">
+    <ul class="small">
+      <li><b>Results moved between runs:</b> F1 {{ fin.reproduced.f1 | f3 }} locally vs {{ fin.official.f1 | f3 }} reported, same code and seed. Library versions.</li>
+      <li><b>Only {{ facts.financial.test_bankrupt | int }} bankrupt test firms,</b> so wide uncertainty.</li>
+      <li><b>Taiwan, 1999–2009:</b> not validated elsewhere.</li>
+      <li><b>Collinear shipping features:</b> scheduled days and shipping mode are one signal.</li>
+      <li><b>Prototype scope:</b> no monitoring, retraining or live feed.</li>
+    </ul>
+    <div class="card">
+      <h3>What I'd do next</h3>
+      <ul class="small" style="margin-top:10px">
+        <li>Pin library versions from day one.</li>
+        <li>Bootstrap intervals on every headline metric.</li>
+        <li>Export one raw-to-probability pipeline per layer.</li>
+        <li>Pick thresholds from real costs, not F1.</li>
+        <li>Test on newer, non-Taiwanese data.</li>
+      </ul>
+    </div>
+  </div>
+  <aside class="notes">Honest limits. Re-running the same notebook on a different machine changed the financial F1 slightly, which taught me to pin library versions early. There are only forty-four bankruptcies to test on, the data is Taiwanese and old, and two shipping features are really one. Next, I'd add error bars and choose thresholds from actual costs.</aside>
+</section>
+
+<!-- 14 -->
+<section>
+  <span class="eyebrow">Team &amp; links</span>
+  <h2>Who built it</h2>
+  <div class="cols">
+    <div>
+      <ul class="team">
+        <li>Arthunya Kanoklertwongse <span>financial layer, leakage checks, demo</span></li>
+        <li>Ankit Kumar <span>financial model selection and tuning</span></li>
+        <li>Divya Gopal <span>pipeline integration, operations selection and tuning</span></li>
+        <li>Aswin Shriram Thiagarajan <span>operations EDA and cleaning</span></li>
+      </ul>
+      <p class="small" style="margin-top:22px"><b>My role:</b> the financial layer, verifying the operations leakage, the live demo build (export, scoring, SHAP, console), coordination and report writing.</p>
+    </div>
+    <div class="links">
+      <a href="https://arthunya.github.io/cerop/">Project site</a>
+      <a href="https://arthunya.github.io/cerop/console/">Live demo</a>
+      <a href="https://arthunya.github.io/cerop/reports/CEROP_Final_Report.pdf">Final report (PDF)</a>
+      <a href="https://github.com/arthunya/cerop">Code on GitHub</a>
+      <a href="https://arthunya.github.io/portfolio/">Portfolio</a>
+      <a href="https://arthunya.github.io/cerop/reports/CEROP_Deck.pdf">This deck as PDF</a>
+    </div>
+  </div>
+  <aside class="notes">CEROP was a four-person team project. I owned the financial layer, checked the operations data for leakage, and built the live demo. After the course I rebuilt the console, wrote the project site and this deck, and rechecked every number against the result files. Everything is linked here, including the code and the full report.</aside>
+</section>
+
+</div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/notes/notes.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="../assets/js/site.js"></script>
+<script src="deck.js"></script>
+</body>
+</html>

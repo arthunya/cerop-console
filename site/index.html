@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+{{> head}}
+<title>CEROP · Supplier and shipment risk, explained</title>
+<meta name="description" content="CEROP is a graduate machine-learning project with two models: one flags suppliers that may go bankrupt, the other flags shipments likely to arrive late. Each score comes with a readable reason.">
+<meta property="og:title" content="CEROP · Supplier and shipment risk, explained">
+<meta property="og:description" content="Two models, two scores, each with a reason you can read. Try the live demo on real held-out test data.">
+</head>
+<body>
+{{> header}}
+<main id="main">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Graduate ML project · AIT 506 · 2026</span>
+      <h1>Which suppliers may go under. Which shipments <em>will be late.</em></h1>
+      <p class="lede">CEROP is two machine-learning models built side by side. One estimates whether a supplier will go bankrupt, the other whether an order will arrive late, and every score comes with a reason you can read.</p>
+      <div class="btns">
+        <a class="btn primary" href="{{root}}console/">Try the live demo</a>
+        <a class="btn" href="{{root}}deck/">View the deck</a>
+      </div>
+      <div class="textlinks">
+        <a href="{{root}}reports/CEROP_Final_Report.pdf">Final report (PDF)</a>
+        <a href="https://github.com/arthunya/cerop">View code on GitHub</a>
+      </div>
+    </div>
+    <a class="shot" href="{{root}}console/" aria-label="Open the live Risk Console">
+      <img class="light-only" src="{{root}}assets/img/console-overview-light.png" alt="The CEROP Risk Console showing the shipment threshold explorer with a confusion matrix and a precision-recall chart" width="1600" height="1000">
+      <img class="dark-only" src="{{root}}assets/img/console-overview-dark.png" alt="" width="1600" height="1000">
+    </a>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap two-col">
+    <div class="section-head">
+      <span class="eyebrow">The problem</span>
+      <h2>Two risks that live with <em>two different teams</em></h2>
+      <p>A company buying across borders carries two separate worries. Will the supplier still be in business next quarter? Will this particular shipment arrive when it should? The first sits with credit or procurement. The second sits with logistics.</p>
+      <p>CEROP keeps those questions apart on purpose: two models, two scores. A solvent supplier can still ship late, and a failing one can ship on time right up to the end, so one blended number would hide what each team needs to see.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <h3>Supplier risk</h3>
+        <p class="small muted">Financial layer · XGBoost · {{ facts.financial.features | int }} financial ratios</p>
+        <p>Trained and tested on {{ facts.financial.firms | int }} Taiwanese firms. Only {{ facts.financial.bankrupt_rate | pct1 }} of them went bankrupt, which makes this a search for a rare event.</p>
+      </div>
+      <div class="card">
+        <h3>Shipment delay</h3>
+        <p class="small muted">Operations layer · Random Forest · {{ facts.operations.model_features | int }} order features</p>
+        <p>Trained and tested on {{ facts.operations.orders | int }} orders from the DataCo supply-chain dataset, where {{ facts.operations.late_rate | pct0 }} arrived late.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Results at a glance</span>
+      <h2>What the models achieved on data they never saw</h2>
+    </div>
+    <div class="grid c4">
+      <div class="tile"><div class="k">Financial F1</div><div class="v">{{ fin.official.f1 | f3 }}</div><div class="m">On a {{ facts.financial.bankrupt_rate | pct1 }} positive class. A model that never flags anyone scores 0 here, however accurate it looks.</div></div>
+      <div class="tile"><div class="k">Financial ROC-AUC</div><div class="v">{{ fin.official.roc_auc | f3 }}</div><div class="m">Pick a failing firm and a healthy one at random: the model ranks the failing one higher about {{ fin.official.roc_auc | pct0 }} of the time.</div></div>
+      <div class="tile"><div class="k">Shipment recall</div><div class="v">{{ opsCal.recall | f3 }}</div><div class="m">After calibrating the threshold to {{ ops.calibrated_threshold | t2 }}, the model catches about {{ opsCal.recall | pct0 }} of late orders.</div></div>
+      <div class="tile"><div class="k">Late shipments caught</div><div class="v">{{ ops.extra_caught | plus }}</div><div class="m">More late orders flagged than at the default 0.50 threshold, at a cost of {{ ops.extra_false_alarms | int }} extra false alarms.</div></div>
+    </div>
+    <p class="note">Financial figures are the official test-set results from the submitted report; operations figures come from the saved Week 6 notebook and the exported model. <a href="{{root}}journey/07-results.html">How these numbers were checked</a>.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How it works</span>
+      <h2>From raw data to a score you can question</h2>
+      <p>Each layer goes through the same steps. The leakage checks and the threshold choice turned out to matter more than the choice of algorithm.</p>
+    </div>
+    <div class="pipeline" role="figure" aria-label="CEROP pipeline in eight steps">
+      <ol>
+        <li><b>Data</b><span>Taiwan bankruptcy, DataCo orders, NY Fed GSCPI</span></li>
+        <li><b>Cleaning</b><span>sentinel values, IDs and free text out</span></li>
+        <li><b>Leakage checks</b><span>nothing known only after delivery</span></li>
+        <li><b>Model selection</b><span>3 candidates per layer</span></li>
+        <li><b>Tuning &amp; threshold</b><span>search, then calibrate</span></li>
+        <li><b>Export</b><span>saved once, loaded read-only</span></li>
+        <li><b>Scoring + SHAP</b><span>every explanation adds up</span></li>
+        <li><b>Console</b><span>try it in the browser</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap two-col">
+    <div class="section-head">
+      <span class="eyebrow">The journey</span>
+      <h2>Eight weeks, <em>seven stages</em></h2>
+      <p>The project ran week by week through the course. Each stage has its own page with what we asked, what we did, what we found and what changed because of it, plus the notebook and the report behind it.</p>
+      <a class="btn" href="{{root}}journey/01-problem.html">Start the walkthrough</a>
+    </div>
+    <ol class="timeline">
+      <li><a href="{{root}}journey/01-problem.html"><span class="wk">Week 2</span><div><b>Framing the problem</b><span class="d">Why two layers, and why accuracy was the wrong yardstick.</span></div><span class="arr">→</span></a></li>
+      <li><a href="{{root}}journey/02-data.html"><span class="wk">Week 3</span><div><b>Data &amp; exploration</b><span class="d">Three public datasets and two very different class balances.</span></div><span class="arr">→</span></a></li>
+      <li><a href="{{root}}journey/03-pipeline.html"><span class="wk">Week 4</span><div><b>Cleaning &amp; pipeline</b><span class="d">Removing leakage and an unreliable date tail.</span></div><span class="arr">→</span></a></li>
+      <li><a href="{{root}}journey/04-model-selection.html"><span class="wk">Week 5</span><div><b>Model selection</b><span class="d">XGBoost for suppliers, Random Forest for shipments.</span></div><span class="arr">→</span></a></li>
+      <li><a href="{{root}}journey/05-tuning.html"><span class="wk">Week 6</span><div><b>Tuning &amp; thresholds</b><span class="d">Tuning didn't help. The threshold did.</span></div><span class="arr">→</span></a></li>
+      <li><a href="{{root}}journey/06-explainability.html"><span class="wk">Weeks 7–8</span><div><b>Explainability &amp; the demo</b><span class="d">Real SHAP, checked case by case, and a console to try it.</span></div><span class="arr">→</span></a></li>
+      <li><a href="{{root}}journey/07-results.html"><span class="wk">Final</span><div><b>Results, limits &amp; lessons</b><span class="d">What held up, what didn't, what I'd do next.</span></div><span class="arr">→</span></a></li>
+    </ol>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap role">
+    <div>
+      <span class="eyebrow">My role</span>
+      <h2>Arthunya Kanoklertwongse <span class="muted" style="font-weight:500">(Aty)</span></h2>
+      <p>CEROP was a four-person team project. My parts:</p>
+      <ul>
+        <li><b>Financial layer:</b> exploring and cleaning the Taiwan bankruptcy data, including the sentinel-value tiers and capping rules.</li>
+        <li><b>Leakage verification:</b> finding and checking the Order Status leakage in the operations data, and auditing the team's notebooks and numbers.</li>
+        <li><b>Live demo build:</b> exporting the models, the scoring script, the SHAP explanations with their reconciliation checks, and the Risk Console.</li>
+        <li><b>Coordination and writing:</b> keeping the team's weekly deliverables on track and writing up the reports.</li>
+      </ul>
+      <p>After the course I rebuilt the console and wrote this site and the deck, re-checking every number against the result files along the way.</p>
+    </div>
+    <div class="card">
+      <h3>The team</h3>
+      <ul class="team">
+        <li>Arthunya Kanoklertwongse <span>financial layer, leakage checks, demo</span></li>
+        <li>Ankit Kumar <span>financial model selection and tuning</span></li>
+        <li>Divya Gopal <span>pipeline integration, operations selection and tuning</span></li>
+        <li>Aswin Shriram Thiagarajan <span>operations EDA and cleaning</span></li>
+      </ul>
+      <p class="small muted" style="margin-top:12px">Who wrote which notebook is listed on the <a href="{{root}}resources.html#notebooks">Resources</a> page.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap two-col">
+    <div class="section-head">
+      <span class="eyebrow">Honest scope</span>
+      <h2>A prototype, with known limits</h2>
+      <p>Only {{ facts.financial.test_bankrupt | int }} bankrupt firms are in the test set, the financial data is Taiwanese and ends in 2009, the shipment data is a teaching dataset, and tuning didn't beat the default settings. None of that is hidden. It's all written down.</p>
+      <a class="btn" href="{{root}}journey/07-results.html">Limits and what I'd do next</a>
+    </div>
+    <div class="card">
+      <h3>Reproducibility, stated plainly</h3>
+      <p>The exported financial model scores F1 {{ fin.reproduced.f1 | f3 }} on my machine against the reported {{ fin.official.f1 | f3 }}, with the same code, data and seed. The difference comes from library versions. The reported figure stays the official one, and the gap is explained wherever it shows up.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+{{> footer}}
+</body>
+</html>

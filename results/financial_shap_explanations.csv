@@ -1,0 +1,9 @@
+case_id,base_rate,feature_1_name,feature_1_contribution,feature_2_name,feature_2_contribution,feature_3_name,feature_3_contribution,feature_4_name,feature_4_contribution,final_score
+FIN-001,0.0324,Total debt/Total net worth,-0.003847,Quick Ratio,-0.002878,Retained Earnings to Total Assets,-0.002668,Profitability_Composite,-0.002299,2.4e-05
+FIN-002,0.0324,Quick Ratio,-0.004577,Total debt/Total net worth,-0.004177,Retained Earnings to Total Assets,-0.003341,Profitability_Composite,-0.002494,0.000138
+FIN-003,0.0324,Total debt/Total net worth,-0.00726,Total expense/Assets,-0.004782,Persistent EPS in the Last Four Seasons,-0.002524,Current Liabilities/Liability,-0.002164,0.001027
+FIN-004,0.0324,Quick Ratio,-0.004168,Total debt/Total net worth,-0.003877,Retained Earnings to Total Assets,-0.002554,Profitability_Composite,-0.002178,1.4e-05
+FIN-005,0.0324,Quick Ratio,-0.002927,Retained Earnings to Total Assets,-0.002839,Continuous Net Profit Growth Rate,-0.002247,Profitability_Composite,-0.002217,5e-06
+FIN-006,0.0324,Quick Ratio,0.110668,Persistent EPS in the Last Four Seasons,0.102246,Total debt/Total net worth,0.081057,Retained Earnings to Total Assets,0.072693,0.996009
+FIN-007,0.0324,Persistent EPS in the Last Four Seasons,0.126912,Quick Ratio,0.112805,Retained Earnings to Total Assets,0.084926,Total debt/Total net worth,0.078658,0.991318
+FIN-008,0.0324,Persistent EPS in the Last Four Seasons,0.023939,Quick Ratio,0.022835,Revenue Per Share (Yuan ¥),-0.021354,Net Value Growth Rate,0.019346,0.136627

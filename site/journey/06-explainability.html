@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+{{> head}}
+<title>Explainability &amp; the demo · CEROP</title>
+<meta name="description" content="Weeks 7 and 8 of CEROP: exporting the models, scoring new cases, real SHAP explanations checked case by case, two bugs found and fixed, and the Risk Console.">
+</head>
+<body>
+{{> header}}
+<main id="main">
+<div class="wrap jhead">
+  <span class="eyebrow">Stage 06 · Weeks 7–8</span>
+  <h1>Explainability &amp; the demo</h1>
+  <p class="q">Can someone who isn't a data scientist see why a case was flagged, and trust that the reason is real?</p>
+</div>
+<div class="wrap jbody">
+  <aside>{{> journey-steps}}</aside>
+  <article class="prose">
+    <h2>Export once, load read-only</h2>
+    <p>The final models and their preprocessors were saved once from the notebooks. Everything after that loads them and never refits or re-saves them. The scoring and explanation notebooks print a fingerprint (SHA-256) of each file before and after running, so you can see nothing changed.</p>
+    <p>Chaining the saved artifacts end to end turned up two mismatches between the Week 4 operations preprocessor and the Week 6 model:</p>
+    <ul>
+      <li><b>Column count.</b> The preprocessor still emits the {{ derived.ops_leaky_cols | int }} Order Status columns that Week 6 dropped. Scoring reindexes to the model's own feature list, which removes exactly those columns.</li>
+      <li><b>One column's scale.</b> The Week 6 training data capped and rescaled <i>Order Item Profit Ratio</i>, and the Week 4 preprocessor doesn't. On the eight demo orders it moves scores by under one percentage point and changes no decision (notebook 06). The site and console avoid the issue by using the model's own test file.</li>
+    </ul>
+
+    <h2>Real SHAP, checked case by case</h2>
+    <p>Each explanation comes from SHAP values computed directly from the exported model files, in probability units, so a driver's number is in the same units as the score. For XGBoost that takes the interventional method with a background sample from the training data. For the Random Forest the tree leaves already hold probabilities, so the standard method works as is.</p>
+    <p>Before any case is shown, one check has to pass: the starting point plus <i>every</i> feature's contribution must equal the model's score to within one in a million. If one case fails, the export stops. All {{ shap.fin_n | int }} financial and {{ shap.ops_n | int }} operations cases in the console passed.</p>
+    <p class="chart-title">What moves bankruptcy scores most, on average</p>
+    <p class="chart-sub">Mean absolute SHAP value across all {{ facts.financial.test | int }} test firms, in percentage points</p>
+    <div class="chart" data-chart="shap-global" aria-busy="true"></div>
+    <p class="note">Source: <code>results/web/financial_shap_cases.json</code> (notebook 07).</p>
+
+    <h2>Findings the checks surfaced</h2>
+    <ul>
+      <li><b>Scheduled days ranked first for shipments.</b> The first real SHAP run put <i>days for shipment (scheduled)</i> at the top for every demo order, above shipping mode. The reason: in this data each shipping mode has exactly one scheduled window, so the two columns carry the same information and the model splits the credit. The console now says so next to every operations explanation.</li>
+      <li><b>One-hot columns split a driver in two.</b> Shipping mode was encoded as several yes/no columns, and ranking those separately both understated it and produced labels like "Standard Class" on orders that weren't Standard Class. The fix adds those columns back into one driver and labels it with the order's real value.</li>
+      <li><b>A stale label.</b> Cross-checking the demo against its source data found several orders showing the wrong shipping mode in their card subtitle. The explanation numbers were right; the caption above them wasn't. Fixed against the source rows.</li>
+      <li><b>Top drivers aren't the whole story.</b> For some firms the top few factors explain well under half the move from the starting point. Every panel shows the remainder as its own line instead of hiding it.</li>
+    </ul>
+
+    <h2>The console</h2>
+    <p>The original demo was a single HTML file built for a recorded class presentation. After the course I rebuilt it as the Risk Console: real held-out test cases, a threshold explorer over all {{ facts.operations.test | int }} test orders, and a what-if panel that re-scores a firm in the browser. The browser version of the XGBoost model was checked against Python on all {{ facts.financial.test | int }} test firms before it shipped.</p>
+    <p><a class="btn primary" href="{{root}}console/">Try the demo</a></p>
+
+    <div class="links-pair">
+      <a class="btn sm" href="https://github.com/arthunya/cerop/blob/main/notebooks/06_live_demo_scoring_and_shap.ipynb">View notebook 06</a>
+      <a class="btn sm" href="https://github.com/arthunya/cerop/blob/main/notebooks/07_export_web_artifacts.ipynb">View notebook 07</a>
+      <a class="btn sm" href="{{root}}reports/CEROP_Final_Report.pdf">Read the Final Report (PDF)</a>
+    </div>
+    <nav class="pager" aria-label="Journey pages">
+      <a href="05-tuning.html"><small>Previous</small>← Tuning &amp; thresholds</a>
+      <a class="next" href="07-results.html"><small>Next</small>Results, limits &amp; lessons →</a>
+    </nav>
+  </article>
+</div>
+</main>
+{{> footer}}
+</body>
+</html>

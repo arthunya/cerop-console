@@ -1,0 +1,4 @@
+Extracted from: [AIT506] Group 4 - CEROP_Final_Report.docx
+sha256: c57f2e1a7a95aea628598635db965a2d7c1e6d928e8a44f3defb1a355245d9e7
+Tables: 14
+PDF of the same document: reports/CEROP_Final_Report.pdf

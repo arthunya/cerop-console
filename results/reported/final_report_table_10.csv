@@ -1,0 +1,4 @@
+Model,Selected configuration,CV PR-AUC
+XGBoost (tuned),"colsample_bytree=0.8, learning_rate=0.05, max_depth=8, min_child_weight=1, n_estimators=100, scale_pos_weight=10, subsample=0.9",0.4257 (SD 0.0791)
+Random Forest (tuned),"class_weight=balanced, max_depth=None, max_features=sqrt, min_samples_leaf=8, min_samples_split=10, n_estimators=800",0.3994
+XGBoost (Week 5 baseline),"colsample_bytree=0.8, learning_rate=0.1, max_depth=4, min_child_weight=1, n_estimators=300, scale_pos_weight=29.95, subsample=0.8",0.3895 (SD 0.0590)

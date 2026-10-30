@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+{{> head}}
+<title>Model selection · CEROP</title>
+<meta name="description" content="Week 5 of CEROP: Logistic Regression, Random Forest and XGBoost compared on recall, precision and F1 for bankruptcy; three models compared for late delivery.">
+</head>
+<body>
+{{> header}}
+<main id="main">
+<div class="wrap jhead">
+  <span class="eyebrow">Stage 04 · Week 5</span>
+  <h1>Model selection</h1>
+  <p class="q">Which algorithm handles each layer best, judged by the metrics we committed to in Week 2?</p>
+</div>
+<div class="wrap jbody">
+  <aside>{{> journey-steps}}</aside>
+  <article class="prose">
+    <h2>Financial layer: three candidates</h2>
+    <p>Each model was trained on the {{ facts.financial.train | int }} training firms and scored once on the {{ facts.financial.test | int }} test firms, at the default threshold of 0.50. Class imbalance was handled inside the models (class weights for Logistic Regression and Random Forest, a positive-class weight for XGBoost) rather than by inventing synthetic firms.</p>
+    <p class="chart-title">Recall, precision and F1 on the test set</p>
+    <p class="chart-sub">Higher is better. Threshold 0.50.</p>
+    <div class="chart" data-chart="fin-models" aria-busy="true"></div>
+    <p class="note">Source: Final Report Table 7 (<code>results/reported/final_report_table_07.csv</code>).</p>
+
+    <h3>Why XGBoost won</h3>
+    <p>Logistic Regression catches the most bankruptcies, with recall of {{ finrep.logreg.recall | f3 }}, but its precision is {{ finrep.logreg.precision | f3 }}: most of the firms it flags are fine. An analyst would drown in false alarms. XGBoost has the best F1 ({{ finrep.xgb.f1 | f3 }}) and the best ROC-AUC ({{ finrep.xgb.roc_auc | f3 }}). Random Forest sits close behind on both, at {{ finrep.rf.f1 | f3 }} and {{ finrep.rf.roc_auc | f3 }}, which makes it a reasonable fallback.</p>
+
+    <h3>XGBoost on the test set</h3>
+    <div class="cm" role="table" aria-label="XGBoost confusion matrix, threshold 0.50">
+      <div class="h"></div><div class="h">Said solvent</div><div class="h">Said bankrupt</div>
+      <div class="v">Really solvent</div><div class="c"><b>{{ fin.official.tn | int }}</b><span>correctly cleared</span></div><div class="c miss"><b>{{ fin.official.fp | int }}</b><span>false alarms</span></div>
+      <div class="v">Really bankrupt</div><div class="c miss"><b>{{ fin.official.fn | int }}</b><span>missed</span></div><div class="c hit"><b>{{ fin.official.tp | int }}</b><span>caught</span></div>
+    </div>
+    <p style="margin-top:14px">For a credit analyst, that reads as: of the {{ facts.financial.test_bankrupt | int }} firms that went bankrupt, the model flagged {{ fin.official.tp | int }}. It flagged {{ derived.fin_flagged | int }} firms in all, and {{ fin.official.tp | int }} of those really failed. It's a strong pointer to which files to read first, and a weak tool for deciding on its own.</p>
+    <p class="note">Official figures: <code>results/week6_financial_tuning_results.csv</code> and <code>week6_financial_confusion_matrices.csv</code>, row "XGBoost - Week 5 published", identical to the report. The Week 5 notebook in this repo was re-run later on different library versions and now shows F1 {{ finrerun.xgb.f1 | f3 }} for XGBoost and {{ finrerun.rf.f1 | f3 }} for Random Forest. <a href="07-results.html#drift">Why the numbers moved</a>.</p>
+
+    <h2>Operations layer: three candidates</h2>
+    <p>For late delivery the team compared Logistic Regression, a linear SVM and a Random Forest. Random Forest led on every metric that matters here. The linear models can't capture interactions such as shipping mode combined with order timing and region.</p>
+    <p class="chart-title">Week 5 comparison on the 35-feature data</p>
+    <p class="chart-sub">Measured before the Order Status columns were removed in Week 6, so treat these as a ranking, not final numbers.</p>
+    <div class="chart" data-chart="ops-models" aria-busy="true"></div>
+    <p class="note">Source: <code>results/week5_operations_model_comparison.csv</code>.</p>
+
+    <h2>What changed because of it</h2>
+    <p>XGBoost went forward for suppliers and Random Forest for shipments. The question for Week 6 was whether tuning could improve either one.</p>
+
+    <div class="links-pair">
+      <a class="btn sm" href="https://github.com/arthunya/cerop/blob/main/notebooks/04a_financial_model_selection.ipynb">View notebook 04a</a>
+      <a class="btn sm" href="https://github.com/arthunya/cerop/blob/main/notebooks/04b_operations_model_selection.ipynb">View notebook 04b</a>
+      <a class="btn sm" href="{{root}}reports/CEROP_Week5_Model_Selection.pdf">Read the Week 5 report (PDF)</a>
+    </div>
+    <nav class="pager" aria-label="Journey pages">
+      <a href="03-pipeline.html"><small>Previous</small>← Cleaning &amp; pipeline</a>
+      <a class="next" href="05-tuning.html"><small>Next</small>Tuning &amp; thresholds →</a>
+    </nav>
+  </article>
+</div>
+</main>
+{{> footer}}
+</body>
+</html>

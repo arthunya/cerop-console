@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+{{> head}}
+<title>Tuning &amp; thresholds · CEROP</title>
+<meta name="description" content="Week 6 of CEROP: hyperparameter tuning did not beat the defaults on either layer. Calibrating the operations threshold did, at a cost in false alarms.">
+</head>
+<body>
+{{> header}}
+<main id="main">
+<div class="wrap jhead">
+  <span class="eyebrow">Stage 05 · Week 6</span>
+  <h1>Tuning didn't help. <em>The threshold did.</em></h1>
+  <p class="q">Can hyperparameter search squeeze more out of each model, and where should the yes/no line sit?</p>
+</div>
+<div class="wrap jbody">
+  <aside>{{> journey-steps}}</aside>
+  <article class="prose">
+    <h2>The honest negative result</h2>
+    <p>Both layers went through a randomized hyperparameter search with cross-validation. Neither tuned model beat its starting configuration at the default threshold of 0.50.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Layer</th><th>Configuration</th><th class="n">F1 at 0.50</th></tr></thead>
+        <tbody>
+          <tr><td>Financial</td><td>Week 5 settings, refit on the tuning split</td><td class="n">{{ fin.tuning.before.f1 | f3 }}</td></tr>
+          <tr><td>Financial</td><td>Tuned XGBoost, same split</td><td class="n">{{ fin.tuning.after.f1 | f3 }}</td></tr>
+          <tr><td>Operations</td><td>Baseline Random Forest</td><td class="n">{{ opsBase.f1 | f3 }}</td></tr>
+          <tr><td>Operations</td><td>Tuned Random Forest</td><td class="n">{{ opsDef.f1 | f3 }}</td></tr>
+        </tbody>
+        <caption>Sources: <code>results/week6_financial_tuning_results.csv</code>, <code>results/week6_operations_tuning_results.csv</code>.</caption>
+      </table>
+    </div>
+    <p>That's worth saying plainly instead of burying. With {{ facts.financial.test_bankrupt | int }} bankruptcies in the test set, the financial difference is a couple of firms either way. The Week 6 notebook checked this with a paired bootstrap ({{ fin.tuning.bootstrap.n_resamples | int }} resamples of the test set): the 95% interval for the change in PR-AUC runs from {{ fin.tuning.bootstrap.ci_low | f3 }} to {{ fin.tuning.bootstrap.ci_high | f3 }}, which includes zero, so the drop can't be told apart from noise. On the operations side the tuned forest did rank orders a little better (ROC-AUC {{ opsDef.roc_auc | f3 }} against {{ opsBase.roc_auc | f3 }}), it just didn't turn that into a better F1 at 0.50. The financial layer therefore kept its Week 5 XGBoost.</p>
+    <p class="note">The financial search fit on a {{ report.t09.r1.c1 | int }}-firm tuning split and held out {{ report.t09.r2.c1 | int }} firms for validation (Final Report Table 9), so its F1 values aren't directly comparable with the full-training-set result of {{ fin.official.f1 | f3 }}.</p>
+
+    <h2>The threshold is a business decision</h2>
+    <p>A classifier outputs a probability. Calling an order "likely late" at 0.50 is a convention, not a law. Lower the line and you catch more late orders but raise more false alarms. Raise it and the reverse happens. Which side is cheaper depends on the business.</p>
+    <p>For operations, the team picked the threshold with the best F1 on a <b>validation set</b> carved out of the training data, so the test set stayed untouched until the very end.</p>
+    <p class="chart-title">Validation precision, recall and F1 across thresholds</p>
+    <p class="chart-sub">Drag the slider or click the chart. The bold line is the chosen threshold.</p>
+    <div class="chart" data-chart="ops-threshold" aria-busy="true"></div>
+    <p class="note">Source: <code>results/week6_operations_threshold_results.csv</code>. The best validation F1 was {{ val.f1 | f3 }} at {{ val.t | t2 }}.</p>
+
+    <h2>Before and after, on the test set</h2>
+    <div class="cm-pair">
+      <div>
+        <h3>Tuned Random Forest at 0.50</h3>
+        <div class="cm" role="table" aria-label="Confusion matrix at threshold 0.50">
+          <div class="h"></div><div class="h">Said on time</div><div class="h">Said late</div>
+          <div class="v">Really on time</div><div class="c"><b>{{ opsDef.tn | int }}</b><span>left alone</span></div><div class="c miss"><b>{{ opsDef.fp | int }}</b><span>false alarms</span></div>
+          <div class="v">Really late</div><div class="c miss"><b>{{ opsDef.fn | int }}</b><span>missed</span></div><div class="c hit"><b>{{ opsDef.tp | int }}</b><span>caught</span></div>
+        </div>
+      </div>
+      <div>
+        <h3>Same model at {{ ops.calibrated_threshold | t2 }}</h3>
+        <div class="cm" role="table" aria-label="Confusion matrix at the calibrated threshold">
+          <div class="h"></div><div class="h">Said on time</div><div class="h">Said late</div>
+          <div class="v">Really on time</div><div class="c"><b>{{ opsCal.tn | int }}</b><span>left alone</span></div><div class="c miss"><b>{{ opsCal.fp | int }}</b><span>false alarms</span></div>
+          <div class="v">Really late</div><div class="c miss"><b>{{ opsCal.fn | int }}</b><span>missed</span></div><div class="c hit"><b>{{ opsCal.tp | int }}</b><span>caught</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="callout">Moving the line from 0.50 to {{ ops.calibrated_threshold | t2 }} catches <b>{{ ops.extra_caught | int }} more late shipments</b> and raises <b>{{ ops.extra_false_alarms | int }} more false alarms</b>. Recall rises from {{ opsDef.recall | f3 }} to {{ opsCal.recall | f3 }}, precision falls from {{ opsDef.precision | f3 }} to {{ opsCal.precision | f3 }}, and F1 ends at {{ opsCal.f1 | f3 }}.</div>
+    <p class="chart-title">All three operations configurations</p>
+    <div class="chart" data-chart="ops-tuning" aria-busy="true"></div>
+    <p class="note">Source: <code>results/week6_operations_tuning_results.csv</code> and <code>week6_operations_confusion_matrices.csv</code>, from the Week 6 notebook as saved in this repo.</p>
+
+    <h2 id="two-runs">A note on the two runs</h2>
+    <p>The Week 6 notebook was run twice. The team's Colab run, which the submitted reports quote, selected a threshold of {{ colabCal.threshold | t2 }} and reached recall {{ colabCal.recall | f3 }} and F1 {{ colabCal.f1 | f3 }}. The notebook was re-run locally in August to export the final model, and that run selected {{ ops.calibrated_threshold | t2 }}. The model file behind the console comes from the second run, so this site uses its numbers everywhere. Both sets of result files are in the repo.</p>
+
+    <h2>What changed because of it</h2>
+    <p>The financial layer stays at 0.50, because tuning and threshold moves didn't give a dependable gain on {{ facts.financial.test_bankrupt | int }} positives. The operations layer ships at {{ ops.calibrated_threshold | t2 }}, and the console lets you move that line yourself.</p>
+
+    <div class="links-pair">
+      <a class="btn sm" href="https://github.com/arthunya/cerop/blob/main/notebooks/05b_operations_tuning.ipynb">View notebook 05b</a>
+      <a class="btn sm" href="https://github.com/arthunya/cerop/blob/main/notebooks/05a_financial_finalization.ipynb">View notebook 05a</a>
+      <a class="btn sm" href="{{root}}reports/CEROP_Week6_Finalizing_Models.pdf">Read the Week 6 report (PDF)</a>
+    </div>
+    <nav class="pager" aria-label="Journey pages">
+      <a href="04-model-selection.html"><small>Previous</small>← Model selection</a>
+      <a class="next" href="06-explainability.html"><small>Next</small>Explainability &amp; demo →</a>
+    </nav>
+  </article>
+</div>
+</main>
+{{> footer}}
+</body>
+</html>

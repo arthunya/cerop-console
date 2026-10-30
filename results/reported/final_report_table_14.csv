@@ -1,0 +1,4 @@
+Model,Threshold,TN,FP,FN,TP
+Corrected Baseline RF,0.50,"12,975","2,564","6,672","12,182"
+Tuned RF at 0.50 (default),0.50,"13,373","2,166","6,994","11,860"
+Tuned RF at 0.39 (calibrated),0.39,"8,494","7,045","2,847","16,007"

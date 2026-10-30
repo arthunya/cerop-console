@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+{{> head}}
+<title>Resources · CEROP</title>
+<meta name="description" content="Everything behind CEROP: the deck, the reports as PDFs, every notebook, the datasets and their licenses, the models and the code.">
+</head>
+<body>
+{{> header}}
+<main id="main">
+<div class="wrap jhead">
+  <span class="eyebrow">Resources</span>
+  <h1>Everything behind the project</h1>
+  <p class="q">The deck, the reports, every notebook, the data sources and the saved models, all in one place.</p>
+</div>
+<div class="wrap" style="padding-bottom:72px">
+  <div class="feature-links">
+    <a class="card" href="{{root}}deck/"><span class="eyebrow">Deck</span><h3>The CEROP story in 14 slides</h3><p class="muted">Readable in about five minutes without a speaker. View in the browser, or <span style="text-decoration:underline">download the PDF</span> from the last slide.</p></a>
+    <a class="card" href="{{root}}reports/CEROP_Final_Report.pdf"><span class="eyebrow">Final report · PDF</span><h3>The full write-up</h3><p class="muted">Every method, table and figure as submitted at the end of the course.</p></a>
+  </div>
+  <p class="small" style="margin-top:12px">Deck PDF: <a href="{{root}}reports/CEROP_Deck.pdf">CEROP_Deck.pdf</a></p>
+
+  <h2 id="notebooks" style="margin-top:56px">Notebooks</h2>
+  <p class="muted">Copied from the course folder with their outputs intact. The only edits are redacted local file paths, listed in <a href="https://github.com/arthunya/cerop/blob/main/docs/redactions.md">docs/redactions.md</a>.</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Notebook</th><th>What it does</th><th>Author</th><th>Open</th></tr></thead>
+      <tbody>
+        <tr><td><code>01_eda_combined</code></td><td>Week 3 exploration of both datasets</td><td>Arthunya (financial), Aswin (operations)</td><td><a href="https://github.com/arthunya/cerop/blob/main/notebooks/01_eda_combined.ipynb">GitHub</a> · <a href="https://nbviewer.org/github/arthunya/cerop/blob/main/notebooks/01_eda_combined.ipynb">nbviewer</a></td></tr>
+        <tr><td><code>02a_financial_cleaning</code></td><td>Sentinel values, capping, composite features</td><td>Arthunya</td><td><a href="https://github.com/arthunya/cerop/blob/main/notebooks/02a_financial_cleaning.ipynb">GitHub</a> · <a href="https://nbviewer.org/github/arthunya/cerop/blob/main/notebooks/02a_financial_cleaning.ipynb">nbviewer</a></td></tr>
+        <tr><td><code>02b_operations_cleaning</code></td><td>Leakage columns, outliers, date features</td><td>Aswin</td><td><a href="https://github.com/arthunya/cerop/blob/main/notebooks/02b_operations_cleaning.ipynb">GitHub</a> · <a href="https://nbviewer.org/github/arthunya/cerop/blob/main/notebooks/02b_operations_cleaning.ipynb">nbviewer</a></td></tr>
+        <tr><td><code>03_pipeline_integration</code></td><td>Both layers in one split-then-fit pipeline, GSCPI merge, checks</td><td>Divya</td><td><a href="https://github.com/arthunya/cerop/blob/main/notebooks/03_pipeline_integration.ipynb">GitHub</a> · <a href="https://nbviewer.org/github/arthunya/cerop/blob/main/notebooks/03_pipeline_integration.ipynb">nbviewer</a></td></tr>
+        <tr><td><code>04a_financial_model_selection</code></td><td>Logistic Regression vs Random Forest vs XGBoost</td><td>Ankit</td><td><a href="https://github.com/arthunya/cerop/blob/main/notebooks/04a_financial_model_selection.ipynb">GitHub</a> · <a href="https://nbviewer.org/github/arthunya/cerop/blob/main/notebooks/04a_financial_model_selection.ipynb">nbviewer</a></td></tr>
+        <tr><td><code>04b_operations_model_selection</code></td><td>Logistic Regression vs linear SVM vs Random Forest</td><td>Divya</td><td><a href="https://github.com/arthunya/cerop/blob/main/notebooks/04b_operations_model_selection.ipynb">GitHub</a> · <a href="https://nbviewer.org/github/arthunya/cerop/blob/main/notebooks/04b_operations_model_selection.ipynb">nbviewer</a></td></tr>
+        <tr><td><code>05a_financial_finalization</code></td><td>Tuning, threshold checks, bootstrap</td><td>Ankit</td><td><a href="https://github.com/arthunya/cerop/blob/main/notebooks/05a_financial_finalization.ipynb">GitHub</a> · <a href="https://nbviewer.org/github/arthunya/cerop/blob/main/notebooks/05a_financial_finalization.ipynb">nbviewer</a></td></tr>
+        <tr><td><code>05b_operations_tuning</code></td><td>Random Forest search and threshold calibration</td><td>Divya</td><td><a href="https://github.com/arthunya/cerop/blob/main/notebooks/05b_operations_tuning.ipynb">GitHub</a> · <a href="https://nbviewer.org/github/arthunya/cerop/blob/main/notebooks/05b_operations_tuning.ipynb">nbviewer</a></td></tr>
+        <tr><td><code>06_live_demo_scoring_and_shap</code></td><td>The demo scripts, run end to end; the profit-ratio scale check</td><td>Arthunya</td><td><a href="https://github.com/arthunya/cerop/blob/main/notebooks/06_live_demo_scoring_and_shap.ipynb">GitHub</a> · <a href="https://nbviewer.org/github/arthunya/cerop/blob/main/notebooks/06_live_demo_scoring_and_shap.ipynb">nbviewer</a></td></tr>
+        <tr><td><code>07_export_web_artifacts</code></td><td>Scores, SHAP cases and the what-if model behind this site</td><td>Arthunya</td><td><a href="https://github.com/arthunya/cerop/blob/main/notebooks/07_export_web_artifacts.ipynb">GitHub</a> · <a href="https://nbviewer.org/github/arthunya/cerop/blob/main/notebooks/07_export_web_artifacts.ipynb">nbviewer</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="reports" style="margin-top:56px">Reports</h2>
+  <p class="muted">The weekly group reports and the Final Report, exported to PDF from the submitted documents.</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Week</th><th>Report</th></tr></thead>
+      <tbody>
+        <tr><td>2</td><td><a href="{{root}}reports/CEROP_Week2_Problem_and_Proposal.pdf">Frame the problem and proposal</a></td></tr>
+        <tr><td>3</td><td><a href="{{root}}reports/CEROP_Week3_Data_Exploration.pdf">Getting and exploring the data</a></td></tr>
+        <tr><td>4</td><td><a href="{{root}}reports/CEROP_Week4_Data_Preparation.pdf">Preparing the data</a></td></tr>
+        <tr><td>5</td><td><a href="{{root}}reports/CEROP_Week5_Model_Selection.pdf">Model selection and shortlisting</a></td></tr>
+        <tr><td>6</td><td><a href="{{root}}reports/CEROP_Week6_Finalizing_Models.pdf">Finalizing the models</a></td></tr>
+        <tr><td>Final</td><td><a href="{{root}}reports/CEROP_Final_Report.pdf">Final Report</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="datasets" style="margin-top:56px">Datasets</h2>
+  <p class="muted">Raw data isn't stored in the repo. <a href="https://github.com/arthunya/cerop/blob/main/data/README.md">data/README.md</a> says where to download each file and where to put it.</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Dataset</th><th>Source</th><th>License</th></tr></thead>
+      <tbody>
+        <tr><td>Taiwanese Bankruptcy Prediction</td><td><a href="https://archive.ics.uci.edu/dataset/572/taiwanese+bankruptcy+prediction">UCI Machine Learning Repository</a> (doi:10.24432/C5004D)</td><td>CC BY 4.0</td></tr>
+        <tr><td>DataCo Smart Supply Chain for Big Data Analysis</td><td><a href="https://data.mendeley.com/datasets/8gx2fvg2k6/5">Mendeley Data</a>, Constante, Silva &amp; Pereira (doi:10.17632/8gx2fvg2k6.5)</td><td>CC BY 4.0</td></tr>
+        <tr><td>Global Supply Chain Pressure Index</td><td><a href="https://www.newyorkfed.org/research/policy/gscpi">Federal Reserve Bank of New York</a>; method in Benigno et al. (2022), Staff Report 1017</td><td>NY Fed website terms of use; the file is not redistributed here</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="models" style="margin-top:56px">Models</h2>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>File</th><th>What it is</th><th>Where</th></tr></thead>
+      <tbody>
+        <tr><td><code>cerop_financial_xgb.pkl</code></td><td>Financial XGBoost, Week 5 configuration</td><td><a href="https://github.com/arthunya/cerop/tree/main/models">models/</a></td></tr>
+        <tr><td><code>cerop_financial_preprocessor.pkl</code></td><td>StandardScaler for the 85 financial features</td><td><a href="https://github.com/arthunya/cerop/tree/main/models">models/</a></td></tr>
+        <tr><td><code>cerop_operations_preprocessor.pkl</code></td><td>Week 4 operations ColumnTransformer (see the known mismatches)</td><td><a href="https://github.com/arthunya/cerop/tree/main/models">models/</a></td></tr>
+        <tr><td><code>cerop_operations_rf.pkl</code></td><td>Tuned operations Random Forest, 1.24 GB</td><td>Available on request (see <a href="https://github.com/arthunya/cerop/blob/main/models/README.md">models/README.md</a>)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="code" style="margin-top:56px">Code</h2>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Folder</th><th>Contents</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://github.com/arthunya/cerop/tree/main/notebooks"><code>notebooks/</code></a></td><td>The ten notebooks above</td></tr>
+        <tr><td><a href="https://github.com/arthunya/cerop/tree/main/scripts"><code>scripts/</code></a></td><td>The original demo scripts (scoring, SHAP, labels, export checks) and the report-table extractor</td></tr>
+        <tr><td><a href="https://github.com/arthunya/cerop/tree/main/results"><code>results/</code></a></td><td>Week 5 and 6 result CSVs, both Week 6 runs, report tables, and the web exports</td></tr>
+        <tr><td><a href="https://github.com/arthunya/cerop/tree/main/console"><code>console/</code></a></td><td>The Risk Console (React + Vite) and the browser parity test</td></tr>
+        <tr><td><a href="https://github.com/arthunya/cerop/tree/main/site"><code>site/</code></a></td><td>This site, the deck, and the scripts that turn results into page data</td></tr>
+        <tr><td><a href="https://github.com/arthunya/cerop/tree/main/docs"><code>docs/</code></a></td><td>Methodology, limitations, engineering log, notebook map</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</main>
+{{> footer}}
+</body>
+</html>

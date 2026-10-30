@@ -1,0 +1,4 @@
+Model,Threshold,Accuracy,Precision,Recall,F1,ROC-AUC,PR-AUC
+Corrected Baseline RF,0.50,0.7315,0.8261,0.6461,0.7251,0.8138,0.8620
+Tuned RF at 0.50 (default),0.50,0.7337,0.8456,0.6290,0.7214,0.8258,0.8730
+Tuned RF at 0.39 (calibrated),0.39,0.7124,0.6944,0.8490,0.7639,0.8258,0.8730

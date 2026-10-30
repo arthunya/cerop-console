@@ -1,0 +1,3 @@
+Layer,Rows in,Rows after cleaning,Train,Test,Features
+Financial (Taiwan),"6,819","6,819","5,455","1,364",85
+Operations (DataCo),"180,519","171,962","137,569","34,393",35

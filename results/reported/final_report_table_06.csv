@@ -1,0 +1,4 @@
+Decision,Layer notebook,Integration,Reason
+IQR clipping scope,Train only,"Train and test, using train bounds",Keeps both matrices on one scale; bounds carry no test information
+Market encoding,One-hot,Target encoded,Treated as a geographic rollup with the other geography columns
+Customer Country encoding,Target encoded,One-hot,"Only two levels, so one indicator column is simpler and readable"

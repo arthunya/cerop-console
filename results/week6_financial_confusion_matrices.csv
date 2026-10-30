@@ -1,0 +1,12 @@
+Model,Stage,Threshold,TN,FP,FN,TP,Recall
+XGBoost - Week 5 published,Week 5 reference,0.5,1300,20,21,23,0.5227272727272727
+XGBoost - Week 5 config,Before,0.5,1301,19,19,25,0.5681818181818182
+XGBoost - tuned,After,0.5,1296,24,21,23,0.5227272727272727
+XGBoost - tuned @ calibrated,After + calibrated,0.3345,1278,42,18,26,0.5909090909090909
+XGBoost - tuned @ recall>=80%,After + recall target,0.0305,1196,124,9,35,0.7954545454545454
+Random Forest - tuned,After (RF check),0.5,1245,75,11,33,0.75
+Random Forest - tuned @ calibrated,After (RF check) + calibrated,0.7915,1292,28,23,21,0.4772727272727273
+Random Forest - tuned @ recall>=80%,After (RF check) + recall target,0.3307,1205,115,9,35,0.7954545454545454
+Stacking (XGB + RF),Optional (ensemble),0.5,1202,118,9,35,0.7954545454545454
+Stacking (XGB + RF) @ calibrated,Optional (ensemble) + calibrated,0.949,1289,31,22,22,0.5
+Stacking (XGB + RF) @ recall>=80%,Optional (ensemble) + recall target,0.5182,1206,114,9,35,0.7954545454545454

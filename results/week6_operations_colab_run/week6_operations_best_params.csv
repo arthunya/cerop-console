@@ -1,0 +1,2 @@
+Best CV F1,Search Rows,CV Folds,Search Iterations,Selected Threshold,n_estimators,min_samples_split,min_samples_leaf,max_features,max_depth
+0.7050883070352207,50000,3,25,0.39,500,5,1,0.5,

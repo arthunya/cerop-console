@@ -1,0 +1,2249 @@
+{
+ "method": "shap.TreeExplainer (Random Forest leaf probabilities), one-hot dummies grouped to parent feature",
+ "base_value": 0.548184,
+ "threshold": 0.4,
+ "top_n": 6,
+ "grouped_feature_count": 22,
+ "cases": [
+  {
+   "id": "OPS-T02270",
+   "row": 2270,
+   "cell": "TP",
+   "label": 1,
+   "proba": 0.755425,
+   "band": "High",
+   "shipping_mode": "First Class",
+   "scheduled_days": 1,
+   "market": "USCA",
+   "category": "Fishing",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "1 day",
+     "contribution": 0.182312
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "First Class",
+     "contribution": 0.163988
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "TRANSFER",
+     "contribution": -0.106761
+    },
+    {
+     "feature": "GSCPI",
+     "label": "Supply chain pressure (GSCPI)",
+     "value": "-0.18",
+     "contribution": -0.020054
+    },
+    {
+     "feature": "Order Item Discount",
+     "label": "Order discount",
+     "value": "12.00",
+     "contribution": -0.013257
+    },
+    {
+     "feature": "Order Region",
+     "label": "Order Region",
+     "value": "US Center ",
+     "contribution": 0.007575
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": -0.006562
+   },
+   "reconciliation_abs_diff": 5.6288307348495437e-14
+  },
+  {
+   "id": "OPS-T06586",
+   "row": 6586,
+   "cell": "TP",
+   "label": 1,
+   "proba": 0.68071,
+   "band": "High",
+   "shipping_mode": "Second Class",
+   "scheduled_days": 2,
+   "market": "Europe",
+   "category": "Shop By Sport",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "2 days",
+     "contribution": 0.096035
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Second Class",
+     "contribution": 0.083829
+    },
+    {
+     "feature": "Order Item Profit Ratio",
+     "label": "Profit ratio",
+     "value": "0.50",
+     "contribution": -0.029983
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "PAYMENT",
+     "contribution": 0.014148
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "6:00",
+     "contribution": -0.013024
+    },
+    {
+     "feature": "Category Name",
+     "label": "Category Name",
+     "value": "Shop By Sport",
+     "contribution": -0.010817
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": -0.00766
+   },
+   "reconciliation_abs_diff": 3.197442310920451e-14
+  },
+  {
+   "id": "OPS-T12434",
+   "row": 12434,
+   "cell": "TP",
+   "label": 1,
+   "proba": 0.879529,
+   "band": "High",
+   "shipping_mode": "First Class",
+   "scheduled_days": 1,
+   "market": "LATAM",
+   "category": "Camping & Hiking",
+   "segment": "Corporate",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "1 day",
+     "contribution": 0.198946
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "First Class",
+     "contribution": 0.176612
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "TRANSFER",
+     "contribution": -0.083523
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "12:00",
+     "contribution": 0.014207
+    },
+    {
+     "feature": "Benefit per order",
+     "label": "Benefit per order",
+     "value": "124.19",
+     "contribution": -0.012384
+    },
+    {
+     "feature": "Order_DayOfWeek",
+     "label": "Order day of week",
+     "value": "Wednesday",
+     "contribution": 0.009652
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": 0.027836
+   },
+   "reconciliation_abs_diff": 1.5765166949677223e-14
+  },
+  {
+   "id": "OPS-T15219",
+   "row": 15219,
+   "cell": "TP",
+   "label": 1,
+   "proba": 0.549252,
+   "band": "High",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "LATAM",
+   "category": "Men's Footwear",
+   "segment": "Corporate",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.075837
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.059906
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "23:00",
+     "contribution": 0.034347
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "TRANSFER",
+     "contribution": -0.024346
+    },
+    {
+     "feature": "Order_Month",
+     "label": "Order month",
+     "value": "2",
+     "contribution": 0.019891
+    },
+    {
+     "feature": "Order_DayOfWeek",
+     "label": "Order day of week",
+     "value": "Sunday",
+     "contribution": 0.018705
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": 0.088213
+   },
+   "reconciliation_abs_diff": 7.038813976123492e-14
+  },
+  {
+   "id": "OPS-T15910",
+   "row": 15910,
+   "cell": "TP",
+   "label": 1,
+   "proba": 0.439557,
+   "band": "High",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "Pacific Asia",
+   "category": "Women's Apparel",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.098397
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.082133
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "PAYMENT",
+     "contribution": 0.038543
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "18:00",
+     "contribution": 0.011946
+    },
+    {
+     "feature": "GSCPI",
+     "label": "Supply chain pressure (GSCPI)",
+     "value": "-0.62",
+     "contribution": 0.009467
+    },
+    {
+     "feature": "Order Item Discount",
+     "label": "Order discount",
+     "value": "32.50",
+     "contribution": -0.007832
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": 0.019779
+   },
+   "reconciliation_abs_diff": 2.5479618415147343e-14
+  },
+  {
+   "id": "OPS-T23157",
+   "row": 23157,
+   "cell": "TP",
+   "label": 1,
+   "proba": 0.433744,
+   "band": "High",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "Pacific Asia",
+   "category": "Cleats",
+   "segment": "Corporate",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.081323
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.066737
+    },
+    {
+     "feature": "Order Country",
+     "label": "Order Country",
+     "value": "Georgia",
+     "contribution": 0.050522
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "4:00",
+     "contribution": -0.025147
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "DEBIT",
+     "contribution": 0.018882
+    },
+    {
+     "feature": "Customer Segment",
+     "label": "Customer Segment",
+     "value": "Corporate",
+     "contribution": 0.013058
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": -0.023695
+   },
+   "reconciliation_abs_diff": 1.0313971898767704e-13
+  },
+  {
+   "id": "OPS-T25987",
+   "row": 25987,
+   "cell": "TP",
+   "label": 1,
+   "proba": 0.414983,
+   "band": "High",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "LATAM",
+   "category": "Soccer",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.092251
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.07155
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "15:00",
+     "contribution": 0.021085
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "PAYMENT",
+     "contribution": 0.01816
+    },
+    {
+     "feature": "Order Item Profit Ratio",
+     "label": "Profit ratio",
+     "value": "0.48",
+     "contribution": 0.008325
+    },
+    {
+     "feature": "GSCPI",
+     "label": "Supply chain pressure (GSCPI)",
+     "value": "0.00",
+     "contribution": -0.007117
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": -0.009852
+   },
+   "reconciliation_abs_diff": 6.38378239159465e-15
+  },
+  {
+   "id": "OPS-T26634",
+   "row": 26634,
+   "cell": "TP",
+   "label": 1,
+   "proba": 0.861469,
+   "band": "High",
+   "shipping_mode": "Second Class",
+   "scheduled_days": 2,
+   "market": "USCA",
+   "category": "Shop By Sport",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "2 days",
+     "contribution": 0.126585
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Second Class",
+     "contribution": 0.117496
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "DEBIT",
+     "contribution": 0.042858
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "5:00",
+     "contribution": -0.017966
+    },
+    {
+     "feature": "Category Name",
+     "label": "Category Name",
+     "value": "Shop By Sport",
+     "contribution": 0.008603
+    },
+    {
+     "feature": "Order Item Profit Ratio",
+     "label": "Profit ratio",
+     "value": "0.47",
+     "contribution": 0.008064
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": 0.027646
+   },
+   "reconciliation_abs_diff": 2.915445662665661e-13
+  },
+  {
+   "id": "OPS-T30615",
+   "row": 30615,
+   "cell": "TP",
+   "label": 1,
+   "proba": 0.501983,
+   "band": "High",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "Africa",
+   "category": "Women's Apparel",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.093153
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.069807
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "DEBIT",
+     "contribution": 0.033628
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "21:00",
+     "contribution": 0.027226
+    },
+    {
+     "feature": "Benefit per order",
+     "label": "Benefit per order",
+     "value": "-25.12",
+     "contribution": 0.011351
+    },
+    {
+     "feature": "Order Item Discount Rate",
+     "label": "Discount rate",
+     "value": "0.20",
+     "contribution": 0.010754
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": 0.033801
+   },
+   "reconciliation_abs_diff": 1.1102230246251565e-14
+  },
+  {
+   "id": "OPS-T33330",
+   "row": 33330,
+   "cell": "TP",
+   "label": 1,
+   "proba": 0.779229,
+   "band": "High",
+   "shipping_mode": "Second Class",
+   "scheduled_days": 2,
+   "market": "Europe",
+   "category": "Cleats",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "2 days",
+     "contribution": 0.115718
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Second Class",
+     "contribution": 0.099772
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "PAYMENT",
+     "contribution": 0.036604
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "11:00",
+     "contribution": -0.017836
+    },
+    {
+     "feature": "Order Item Discount Rate",
+     "label": "Discount rate",
+     "value": "0.25",
+     "contribution": -0.009891
+    },
+    {
+     "feature": "Sales",
+     "label": "Sale amount",
+     "value": "119.98",
+     "contribution": -0.004147
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": 0.010825
+   },
+   "reconciliation_abs_diff": 3.708144902248023e-14
+  },
+  {
+   "id": "OPS-T02602",
+   "row": 2602,
+   "cell": "FN",
+   "label": 1,
+   "proba": 0.391696,
+   "band": "Watch",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "Europe",
+   "category": "Women's Apparel",
+   "segment": "Corporate",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.100951
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.080823
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "PAYMENT",
+     "contribution": 0.023982
+    },
+    {
+     "feature": "GSCPI",
+     "label": "Supply chain pressure (GSCPI)",
+     "value": "-0.30",
+     "contribution": 0.006758
+    },
+    {
+     "feature": "Benefit per order",
+     "label": "Benefit per order",
+     "value": "33.00",
+     "contribution": -0.005227
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "16:00",
+     "contribution": -0.005062
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": 0.004835
+   },
+   "reconciliation_abs_diff": 2.1649348980190553e-15
+  },
+  {
+   "id": "OPS-T06493",
+   "row": 6493,
+   "cell": "FN",
+   "label": 1,
+   "proba": 0.388936,
+   "band": "Watch",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "LATAM",
+   "category": "Cleats",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.087842
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.069649
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "TRANSFER",
+     "contribution": -0.033129
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "22:00",
+     "contribution": 0.032697
+    },
+    {
+     "feature": "Order Country",
+     "label": "Order Country",
+     "value": "Colombia",
+     "contribution": -0.01096
+    },
+    {
+     "feature": "Order Item Discount",
+     "label": "Order discount",
+     "value": "0.00",
+     "contribution": 0.008391
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": 0.001244
+   },
+   "reconciliation_abs_diff": 7.216449660063518e-16
+  },
+  {
+   "id": "OPS-T11275",
+   "row": 11275,
+   "cell": "FN",
+   "label": 1,
+   "proba": 0.375652,
+   "band": "Watch",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "LATAM",
+   "category": "Camping & Hiking",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.078637
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.063868
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "TRANSFER",
+     "contribution": -0.056129
+    },
+    {
+     "feature": "Order Country",
+     "label": "Order Country",
+     "value": "El Salvador",
+     "contribution": 0.011561
+    },
+    {
+     "feature": "Benefit per order",
+     "label": "Benefit per order",
+     "value": "105.59",
+     "contribution": -0.010505
+    },
+    {
+     "feature": "Order Item Discount",
+     "label": "Order discount",
+     "value": "60.00",
+     "contribution": 0.010003
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": 0.015044
+   },
+   "reconciliation_abs_diff": 6.661338147750939e-16
+  },
+  {
+   "id": "OPS-T12738",
+   "row": 12738,
+   "cell": "FN",
+   "label": 1,
+   "proba": 0.231079,
+   "band": "Watch",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "LATAM",
+   "category": "Golf Gloves",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.078028
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.065143
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "TRANSFER",
+     "contribution": -0.060887
+    },
+    {
+     "feature": "Product Price",
+     "label": "Product price",
+     "value": "9.99",
+     "contribution": -0.026765
+    },
+    {
+     "feature": "Sales",
+     "label": "Sale amount",
+     "value": "39.96",
+     "contribution": -0.013528
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "5:00",
+     "contribution": -0.012847
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": -0.059906
+   },
+   "reconciliation_abs_diff": 5.190292640122607e-15
+  },
+  {
+   "id": "OPS-T14069",
+   "row": 14069,
+   "cell": "FN",
+   "label": 1,
+   "proba": 0.24129,
+   "band": "Watch",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "LATAM",
+   "category": "Water Sports",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "TRANSFER",
+     "contribution": -0.083743
+    },
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.080284
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.069823
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "11:00",
+     "contribution": -0.016595
+    },
+    {
+     "feature": "Order Item Discount",
+     "label": "Order discount",
+     "value": "34.00",
+     "contribution": -0.013047
+    },
+    {
+     "feature": "Order Region",
+     "label": "Order Region",
+     "value": "South America",
+     "contribution": -0.01068
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": -0.032723
+   },
+   "reconciliation_abs_diff": 5.748179709996748e-14
+  },
+  {
+   "id": "OPS-T15632",
+   "row": 15632,
+   "cell": "FN",
+   "label": 1,
+   "proba": 0.333836,
+   "band": "Watch",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "Pacific Asia",
+   "category": "Water Sports",
+   "segment": "Home Office",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.104138
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.087675
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "PAYMENT",
+     "contribution": 0.014622
+    },
+    {
+     "feature": "GSCPI",
+     "label": "Supply chain pressure (GSCPI)",
+     "value": "-0.66",
+     "contribution": -0.009822
+    },
+    {
+     "feature": "Order Item Discount",
+     "label": "Order discount",
+     "value": "8.00",
+     "contribution": -0.007596
+    },
+    {
+     "feature": "Order Country",
+     "label": "Order Country",
+     "value": "Nueva Zelanda",
+     "contribution": -0.006161
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": -0.013579
+   },
+   "reconciliation_abs_diff": 1.607047828144914e-13
+  },
+  {
+   "id": "OPS-T15872",
+   "row": 15872,
+   "cell": "FN",
+   "label": 1,
+   "proba": 0.247983,
+   "band": "Watch",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "LATAM",
+   "category": "Water Sports",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.08571
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.069272
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "TRANSFER",
+     "contribution": -0.064911
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "4:00",
+     "contribution": -0.019429
+    },
+    {
+     "feature": "Order Region",
+     "label": "Order Region",
+     "value": "South America",
+     "contribution": -0.016957
+    },
+    {
+     "feature": "Order Item Profit Ratio",
+     "label": "Profit ratio",
+     "value": "0.27",
+     "contribution": -0.009334
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": -0.034587
+   },
+   "reconciliation_abs_diff": 2.0483614804334138e-14
+  },
+  {
+   "id": "OPS-T27302",
+   "row": 27302,
+   "cell": "FN",
+   "label": 1,
+   "proba": 0.391995,
+   "band": "Watch",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "LATAM",
+   "category": "Water Sports",
+   "segment": "Home Office",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.071955
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.05996
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "TRANSFER",
+     "contribution": -0.05431
+    },
+    {
+     "feature": "Order_Month",
+     "label": "Order month",
+     "value": "4",
+     "contribution": 0.016156
+    },
+    {
+     "feature": "Customer Segment",
+     "label": "Customer Segment",
+     "value": "Home Office",
+     "contribution": 0.009969
+    },
+    {
+     "feature": "Order_DayOfWeek",
+     "label": "Order day of week",
+     "value": "Sunday",
+     "contribution": 0.008345
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": -0.004433
+   },
+   "reconciliation_abs_diff": 1.3672396548258803e-13
+  },
+  {
+   "id": "OPS-T31179",
+   "row": 31179,
+   "cell": "FN",
+   "label": 1,
+   "proba": 0.312431,
+   "band": "Watch",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "USCA",
+   "category": "Women's Apparel",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.088879
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.075208
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "5:00",
+     "contribution": -0.01995
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "CASH",
+     "contribution": 0.015018
+    },
+    {
+     "feature": "Benefit per order",
+     "label": "Benefit per order",
+     "value": "64.68",
+     "contribution": -0.013354
+    },
+    {
+     "feature": "Order Item Profit Ratio",
+     "label": "Profit ratio",
+     "value": "0.44",
+     "contribution": -0.010002
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": -0.043378
+   },
+   "reconciliation_abs_diff": 2.2154500456395e-13
+  },
+  {
+   "id": "OPS-T33509",
+   "row": 33509,
+   "cell": "FN",
+   "label": 1,
+   "proba": 0.356621,
+   "band": "Watch",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "Europe",
+   "category": "Camping & Hiking",
+   "segment": "Corporate",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.090017
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.072215
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "TRANSFER",
+     "contribution": -0.056328
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "15:00",
+     "contribution": 0.014274
+    },
+    {
+     "feature": "GSCPI",
+     "label": "Supply chain pressure (GSCPI)",
+     "value": "0.08",
+     "contribution": -0.010579
+    },
+    {
+     "feature": "Order_DayOfWeek",
+     "label": "Order day of week",
+     "value": "Wednesday",
+     "contribution": 0.007911
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": 0.015391
+   },
+   "reconciliation_abs_diff": 8.870681966755001e-14
+  },
+  {
+   "id": "OPS-T03460",
+   "row": 3460,
+   "cell": "FP",
+   "label": 0,
+   "proba": 0.471171,
+   "band": "High",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "Europe",
+   "category": "Indoor/Outdoor Games",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.09465
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.071861
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "23:00",
+     "contribution": 0.036266
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "DEBIT",
+     "contribution": 0.026461
+    },
+    {
+     "feature": "Order Country",
+     "label": "Order Country",
+     "value": "Francia",
+     "contribution": 0.00902
+    },
+    {
+     "feature": "GSCPI",
+     "label": "Supply chain pressure (GSCPI)",
+     "value": "-0.88",
+     "contribution": 0.008862
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": 0.008889
+   },
+   "reconciliation_abs_diff": 5.967448757360216e-14
+  },
+  {
+   "id": "OPS-T05761",
+   "row": 5761,
+   "cell": "FP",
+   "label": 0,
+   "proba": 0.432738,
+   "band": "High",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "USCA",
+   "category": "Camping & Hiking",
+   "segment": "Home Office",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.082572
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.068161
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "PAYMENT",
+     "contribution": 0.052101
+    },
+    {
+     "feature": "Benefit per order",
+     "label": "Benefit per order",
+     "value": "121.49",
+     "contribution": -0.023472
+    },
+    {
+     "feature": "Order_DayOfWeek",
+     "label": "Order day of week",
+     "value": "Sunday",
+     "contribution": 0.014709
+    },
+    {
+     "feature": "Order Item Profit Ratio",
+     "label": "Profit ratio",
+     "value": "0.45",
+     "contribution": -0.007921
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": -0.000129
+   },
+   "reconciliation_abs_diff": 1.4210854715202004e-14
+  },
+  {
+   "id": "OPS-T10670",
+   "row": 10670,
+   "cell": "FP",
+   "label": 0,
+   "proba": 0.741881,
+   "band": "High",
+   "shipping_mode": "Second Class",
+   "scheduled_days": 2,
+   "market": "Europe",
+   "category": "Golf Balls",
+   "segment": "Home Office",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "2 days",
+     "contribution": 0.101928
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Second Class",
+     "contribution": 0.090355
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "DEBIT",
+     "contribution": 0.030024
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "9:00",
+     "contribution": -0.01789
+    },
+    {
+     "feature": "Customer Segment",
+     "label": "Customer Segment",
+     "value": "Home Office",
+     "contribution": -0.011337
+    },
+    {
+     "feature": "Benefit per order",
+     "label": "Benefit per order",
+     "value": "4.16",
+     "contribution": 0.009428
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": -0.008811
+   },
+   "reconciliation_abs_diff": 1.3322676295501878e-14
+  },
+  {
+   "id": "OPS-T15044",
+   "row": 15044,
+   "cell": "FP",
+   "label": 0,
+   "proba": 0.516614,
+   "band": "High",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "Pacific Asia",
+   "category": "Men's Footwear",
+   "segment": "Corporate",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.080983
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.068491
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "DEBIT",
+     "contribution": 0.031398
+    },
+    {
+     "feature": "GSCPI",
+     "label": "Supply chain pressure (GSCPI)",
+     "value": "-0.76",
+     "contribution": 0.013949
+    },
+    {
+     "feature": "Order Item Discount",
+     "label": "Order discount",
+     "value": "2.60",
+     "contribution": 0.011571
+    },
+    {
+     "feature": "Order_Month",
+     "label": "Order month",
+     "value": "2",
+     "contribution": 0.010906
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": 0.050081
+   },
+   "reconciliation_abs_diff": 8.892886427247504e-14
+  },
+  {
+   "id": "OPS-T21799",
+   "row": 21799,
+   "cell": "FP",
+   "label": 0,
+   "proba": 0.707093,
+   "band": "High",
+   "shipping_mode": "Second Class",
+   "scheduled_days": 2,
+   "market": "Europe",
+   "category": "Indoor/Outdoor Games",
+   "segment": "Corporate",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "2 days",
+     "contribution": 0.114772
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Second Class",
+     "contribution": 0.112969
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "TRANSFER",
+     "contribution": -0.086448
+    },
+    {
+     "feature": "Sales",
+     "label": "Sale amount",
+     "value": "49.98",
+     "contribution": -0.014976
+    },
+    {
+     "feature": "Customer Segment",
+     "label": "Customer Segment",
+     "value": "Corporate",
+     "contribution": 0.011985
+    },
+    {
+     "feature": "Order_DayOfWeek",
+     "label": "Order day of week",
+     "value": "Wednesday",
+     "contribution": 0.010802
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": 0.009805
+   },
+   "reconciliation_abs_diff": 1.6653345369377348e-14
+  },
+  {
+   "id": "OPS-T24234",
+   "row": 24234,
+   "cell": "FP",
+   "label": 0,
+   "proba": 0.425945,
+   "band": "High",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "Europe",
+   "category": "Indoor/Outdoor Games",
+   "segment": "Corporate",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.087105
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.072532
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "PAYMENT",
+     "contribution": 0.034065
+    },
+    {
+     "feature": "Order Item Quantity",
+     "label": "Order quantity",
+     "value": "4",
+     "contribution": 0.006504
+    },
+    {
+     "feature": "Order Region",
+     "label": "Order Region",
+     "value": "Western Europe",
+     "contribution": -0.005189
+    },
+    {
+     "feature": "Benefit per order",
+     "label": "Benefit per order",
+     "value": "18.89",
+     "contribution": 0.00509
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": -0.003072
+   },
+   "reconciliation_abs_diff": 4.8627768478581856e-14
+  },
+  {
+   "id": "OPS-T26690",
+   "row": 26690,
+   "cell": "FP",
+   "label": 0,
+   "proba": 0.451398,
+   "band": "High",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "Europe",
+   "category": "Cardio Equipment",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.096257
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.078935
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "DEBIT",
+     "contribution": 0.03108
+    },
+    {
+     "feature": "Order_DayOfWeek",
+     "label": "Order day of week",
+     "value": "Monday",
+     "contribution": 0.017605
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "13:00",
+     "contribution": 0.012949
+    },
+    {
+     "feature": "Benefit per order",
+     "label": "Benefit per order",
+     "value": "-40.50",
+     "contribution": 0.008748
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": 0.008023
+   },
+   "reconciliation_abs_diff": 1.5931700403370996e-14
+  },
+  {
+   "id": "OPS-T27935",
+   "row": 27935,
+   "cell": "FP",
+   "label": 0,
+   "proba": 0.848097,
+   "band": "High",
+   "shipping_mode": "Second Class",
+   "scheduled_days": 2,
+   "market": "Pacific Asia",
+   "category": "Men's Footwear",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "2 days",
+     "contribution": 0.116295
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Second Class",
+     "contribution": 0.115256
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "TRANSFER",
+     "contribution": -0.059453
+    },
+    {
+     "feature": "Order Region",
+     "label": "Order Region",
+     "value": "Oceania",
+     "contribution": 0.024942
+    },
+    {
+     "feature": "Order Country",
+     "label": "Order Country",
+     "value": "Australia",
+     "contribution": 0.017272
+    },
+    {
+     "feature": "GSCPI",
+     "label": "Supply chain pressure (GSCPI)",
+     "value": "-0.66",
+     "contribution": 0.017143
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": 0.068459
+   },
+   "reconciliation_abs_diff": 1.318944953254686e-13
+  },
+  {
+   "id": "OPS-T28724",
+   "row": 28724,
+   "cell": "FP",
+   "label": 0,
+   "proba": 0.413056,
+   "band": "High",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "Africa",
+   "category": "Cleats",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.086457
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.073281
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "DEBIT",
+     "contribution": 0.030436
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "11:00",
+     "contribution": -0.012994
+    },
+    {
+     "feature": "Order Region",
+     "label": "Order Region",
+     "value": "West Africa",
+     "contribution": 0.007756
+    },
+    {
+     "feature": "Benefit per order",
+     "label": "Benefit per order",
+     "value": "18.90",
+     "contribution": -0.007531
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": 0.006944
+   },
+   "reconciliation_abs_diff": 1.1812772982011666e-13
+  },
+  {
+   "id": "OPS-T28742",
+   "row": 28742,
+   "cell": "FP",
+   "label": 0,
+   "proba": 0.426348,
+   "band": "High",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "USCA",
+   "category": "Cleats",
+   "segment": "Home Office",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.085496
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.07334
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "CASH",
+     "contribution": 0.024076
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "11:00",
+     "contribution": -0.008416
+    },
+    {
+     "feature": "Benefit per order",
+     "label": "Benefit per order",
+     "value": "54.88",
+     "contribution": 0.006364
+    },
+    {
+     "feature": "Order Item Profit Ratio",
+     "label": "Profit ratio",
+     "value": "0.36",
+     "contribution": 0.005827
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": 0.00915
+   },
+   "reconciliation_abs_diff": 1.8002266344296913e-13
+  },
+  {
+   "id": "OPS-T00247",
+   "row": 247,
+   "cell": "TN",
+   "label": 0,
+   "proba": 0.347424,
+   "band": "Watch",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "LATAM",
+   "category": "Cardio Equipment",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.066213
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "TRANSFER",
+     "contribution": -0.063311
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.056011
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "1:00",
+     "contribution": -0.019308
+    },
+    {
+     "feature": "Order Item Discount",
+     "label": "Order discount",
+     "value": "74.99",
+     "contribution": 0.016635
+    },
+    {
+     "feature": "Order Region",
+     "label": "Order Region",
+     "value": "South America",
+     "contribution": -0.013163
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": 0.00061
+   },
+   "reconciliation_abs_diff": 3.995137554113626e-13
+  },
+  {
+   "id": "OPS-T06885",
+   "row": 6885,
+   "cell": "TN",
+   "label": 0,
+   "proba": 0.3733,
+   "band": "Watch",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "USCA",
+   "category": "Fishing",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.087691
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.074221
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "DEBIT",
+     "contribution": 0.015716
+    },
+    {
+     "feature": "Benefit per order",
+     "label": "Benefit per order",
+     "value": "123.03",
+     "contribution": -0.014129
+    },
+    {
+     "feature": "Order Region",
+     "label": "Order Region",
+     "value": "South of  USA ",
+     "contribution": 0.009326
+    },
+    {
+     "feature": "Market",
+     "label": "Market",
+     "value": "USCA",
+     "contribution": -0.008626
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": -0.015258
+   },
+   "reconciliation_abs_diff": 3.4861002973229915e-14
+  },
+  {
+   "id": "OPS-T09627",
+   "row": 9627,
+   "cell": "TN",
+   "label": 0,
+   "proba": 0.38924,
+   "band": "Watch",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "LATAM",
+   "category": "Indoor/Outdoor Games",
+   "segment": "Corporate",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.097018
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.073342
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "DEBIT",
+     "contribution": 0.015483
+    },
+    {
+     "feature": "Product Price",
+     "label": "Product price",
+     "value": "49.98",
+     "contribution": 0.006432
+    },
+    {
+     "feature": "GSCPI",
+     "label": "Supply chain pressure (GSCPI)",
+     "value": "0.16",
+     "contribution": -0.006145
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "22:00",
+     "contribution": 0.005627
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": -0.009982
+   },
+   "reconciliation_abs_diff": 1.6708856520608606e-14
+  },
+  {
+   "id": "OPS-T16465",
+   "row": 16465,
+   "cell": "TN",
+   "label": 0,
+   "proba": 0.376524,
+   "band": "Watch",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "USCA",
+   "category": "Cleats",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.103744
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.084296
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "PAYMENT",
+     "contribution": 0.023444
+    },
+    {
+     "feature": "Sales",
+     "label": "Sale amount",
+     "value": "239.96",
+     "contribution": -0.00765
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "15:00",
+     "contribution": 0.006826
+    },
+    {
+     "feature": "Order Item Discount",
+     "label": "Order discount",
+     "value": "28.80",
+     "contribution": -0.003888
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": -0.002352
+   },
+   "reconciliation_abs_diff": 1.4477308241112041e-13
+  },
+  {
+   "id": "OPS-T22974",
+   "row": 22974,
+   "cell": "TN",
+   "label": 0,
+   "proba": 0.375436,
+   "band": "Watch",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "Pacific Asia",
+   "category": "Fishing",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.084934
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.069121
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "7:00",
+     "contribution": -0.01292
+    },
+    {
+     "feature": "Order Item Profit Ratio",
+     "label": "Profit ratio",
+     "value": "0.49",
+     "contribution": 0.010639
+    },
+    {
+     "feature": "Benefit per order",
+     "label": "Benefit per order",
+     "value": "148.34",
+     "contribution": -0.008109
+    },
+    {
+     "feature": "GSCPI",
+     "label": "Supply chain pressure (GSCPI)",
+     "value": "-0.66",
+     "contribution": -0.005051
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": -0.003254
+   },
+   "reconciliation_abs_diff": 1.915134717478395e-14
+  },
+  {
+   "id": "OPS-T24359",
+   "row": 24359,
+   "cell": "TN",
+   "label": 0,
+   "proba": 0.391671,
+   "band": "Watch",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "USCA",
+   "category": "Women's Apparel",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.086378
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.072249
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "DEBIT",
+     "contribution": 0.028471
+    },
+    {
+     "feature": "Order_DayOfWeek",
+     "label": "Order day of week",
+     "value": "Thursday",
+     "contribution": -0.008791
+    },
+    {
+     "feature": "Benefit per order",
+     "label": "Benefit per order",
+     "value": "-77.18",
+     "contribution": 0.006476
+    },
+    {
+     "feature": "Order Item Discount",
+     "label": "Order discount",
+     "value": "30.00",
+     "contribution": 0.005503
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": -0.029545
+   },
+   "reconciliation_abs_diff": 5.861977570020827e-14
+  },
+  {
+   "id": "OPS-T26941",
+   "row": 26941,
+   "cell": "TN",
+   "label": 0,
+   "proba": 0.2851,
+   "band": "Watch",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "USCA",
+   "category": "Indoor/Outdoor Games",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.094959
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.075081
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "TRANSFER",
+     "contribution": -0.065327
+    },
+    {
+     "feature": "Sales",
+     "label": "Sale amount",
+     "value": "49.98",
+     "contribution": -0.011685
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "15:00",
+     "contribution": 0.011562
+    },
+    {
+     "feature": "Product Price",
+     "label": "Product price",
+     "value": "49.98",
+     "contribution": -0.009396
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": -0.018198
+   },
+   "reconciliation_abs_diff": 1.0119682869458302e-13
+  },
+  {
+   "id": "OPS-T27197",
+   "row": 27197,
+   "cell": "TN",
+   "label": 0,
+   "proba": 0.399797,
+   "band": "Watch",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "Europe",
+   "category": "Indoor/Outdoor Games",
+   "segment": "Corporate",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.09933
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.079583
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "DEBIT",
+     "contribution": 0.022022
+    },
+    {
+     "feature": "Order_Hour",
+     "label": "Order hour",
+     "value": "18:00",
+     "contribution": 0.010285
+    },
+    {
+     "feature": "Order Item Discount",
+     "label": "Order discount",
+     "value": "8.00",
+     "contribution": -0.005897
+    },
+    {
+     "feature": "Benefit per order",
+     "label": "Benefit per order",
+     "value": "-9.78",
+     "contribution": -0.005439
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": 0.009555
+   },
+   "reconciliation_abs_diff": 9.736655925962623e-14
+  },
+  {
+   "id": "OPS-T27513",
+   "row": 27513,
+   "cell": "TN",
+   "label": 0,
+   "proba": 0.247648,
+   "band": "Watch",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "Pacific Asia",
+   "category": "Cleats",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.085412
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "TRANSFER",
+     "contribution": -0.080645
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.074214
+    },
+    {
+     "feature": "Order Region",
+     "label": "Order Region",
+     "value": "Oceania",
+     "contribution": -0.01464
+    },
+    {
+     "feature": "Order Item Discount",
+     "label": "Order discount",
+     "value": "32.39",
+     "contribution": -0.011301
+    },
+    {
+     "feature": "Order_Month",
+     "label": "Order month",
+     "value": "12",
+     "contribution": -0.010774
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": -0.02355
+   },
+   "reconciliation_abs_diff": 1.074140776324839e-14
+  },
+  {
+   "id": "OPS-T27785",
+   "row": 27785,
+   "cell": "TN",
+   "label": 0,
+   "proba": 0.371736,
+   "band": "Watch",
+   "shipping_mode": "Standard Class",
+   "scheduled_days": 4,
+   "market": "Pacific Asia",
+   "category": "Fishing",
+   "segment": "Consumer",
+   "drivers": [
+    {
+     "feature": "Days for shipment (scheduled)",
+     "label": "Scheduled shipping window",
+     "value": "4 days",
+     "contribution": -0.072244
+    },
+    {
+     "feature": "Shipping Mode",
+     "label": "Shipping Mode",
+     "value": "Standard Class",
+     "contribution": -0.059798
+    },
+    {
+     "feature": "Type",
+     "label": "Payment type",
+     "value": "TRANSFER",
+     "contribution": -0.045095
+    },
+    {
+     "feature": "Order Region",
+     "label": "Order Region",
+     "value": "Eastern Asia",
+     "contribution": -0.015011
+    },
+    {
+     "feature": "Order Item Discount",
+     "label": "Order discount",
+     "value": "80.00",
+     "contribution": 0.010078
+    },
+    {
+     "feature": "Category Name",
+     "label": "Category Name",
+     "value": "Fishing",
+     "contribution": -0.007526
+    }
+   ],
+   "rest": {
+    "label": "16 more factors combined",
+    "contribution": 0.013149
+   },
+   "reconciliation_abs_diff": 4.923839114212569e-14
+  }
+ ]
+}

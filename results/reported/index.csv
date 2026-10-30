@@ -1,0 +1,15 @@
+file,rows_including_header,header
+final_report_table_01.csv,4,Tier | # Features | Description
+final_report_table_02.csv,4,Tier | # Features | Action | Rationale
+final_report_table_03.csv,3,Feature | Formula | Business Rationale
+final_report_table_04.csv,5,Encoder | Columns | Output columns
+final_report_table_05.csv,3,Layer | Rows in | Rows after cleaning | Train | Test | Features
+final_report_table_06.csv,4,Decision | Layer notebook | Integration | Reason
+final_report_table_07.csv,4,Model | Accuracy | Precision | Recall | F1-Score | ROC-AUC
+final_report_table_08.csv,4,Model | Accuracy | Precision | Recall | F1-Score | ROC-AUC
+final_report_table_09.csv,4,Split | Rows | Bankrupt | Rate | Used for
+final_report_table_10.csv,4,Model | Selected configuration | CV PR-AUC
+final_report_table_11.csv,12,Model | Thr. | Prec. | Recall | F1 | ROC-AUC | PR-AUC | Caught
+final_report_table_12.csv,7,Hyperparameter | Selected Value
+final_report_table_13.csv,4,Model | Threshold | Accuracy | Precision | Recall | F1 | ROC-AUC | PR-AUC
+final_report_table_14.csv,4,Model | Threshold | TN | FP | FN | TP

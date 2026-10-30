@@ -1,0 +1,4 @@
+Model,Threshold,TN,FP,FN,TP
+Corrected Baseline RF,0.5,12963,2576,6701,12153
+Tuned RF at 0.50,0.5,13368,2171,6996,11858
+Tuned RF at Calibrated Threshold,0.4,9168,6371,3291,15563

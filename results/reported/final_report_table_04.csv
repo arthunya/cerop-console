@@ -1,0 +1,5 @@
+Encoder,Columns,Output columns
+StandardScaler,"Days for shipment (scheduled), Benefit per order, Order Item Discount, Order Item Discount Rate, Order Item Profit Ratio, Order Item Quantity, Sales, Product Price, Order_Year, Order_Month, Order_DayOfWeek, Order_Hour, GSCPI",13
+"OneHotEncoder(drop=""first"")","Type, Customer Country, Customer Segment, Order Status, Shipping Mode",17
+TargetEncoder,"Category Name, Department Name, Market, Order Country, Order Region",5
+Dropped,Customer State,0

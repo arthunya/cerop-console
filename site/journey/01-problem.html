@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+{{> head}}
+<title>Framing the problem · CEROP</title>
+<meta name="description" content="Week 2 of CEROP: the business problem, who would use each model, why there are two layers, and why accuracy was the wrong metric.">
+</head>
+<body>
+{{> header}}
+<main id="main">
+<div class="wrap jhead">
+  <span class="eyebrow">Stage 01 · Week 2</span>
+  <h1>Framing the problem</h1>
+  <p class="q">What decision are we trying to support, for whom, and how would we know the model is any good?</p>
+</div>
+<div class="wrap jbody">
+  <aside>{{> journey-steps}}</aside>
+  <article class="prose">
+    <h2>What we asked</h2>
+    <p>Companies that buy from or extend credit to partners abroad usually check two things separately: is the partner financially healthy, and do their goods arrive on time? Those checks live with different people. A credit or procurement analyst reads balance sheets. A logistics planner watches shipments.</p>
+    <p>Commercial supplier-risk scores already exist, which tells you there's demand for this. They are also proprietary, paid for, refreshed every so often rather than continuously, and they rarely say why a score is what it is. We wanted to see how far public data and course-level methods could get, with the reasoning visible.</p>
+
+    <h2>What we decided</h2>
+    <ul>
+      <li><b>Two layers, two scores.</b> A financial layer predicts bankruptcy. An operations layer predicts late delivery. Each answers its own team's question, so they're trained, judged and shown separately.</li>
+      <li><b>Supervised, batch classification.</b> Both datasets carry a historical yes/no label, so both are binary classifiers trained offline on fixed data.</li>
+      <li><b>Missing a risky partner costs more than an extra review.</b> The original bankruptcy study reached the same conclusion, so recall carries more weight than precision on the financial side.</li>
+      <li><b>Context from outside the company.</b> The operations layer adds the New York Fed's Global Supply Chain Pressure Index by month. The financial data has no dates, so it can't take the same index.</li>
+    </ul>
+
+    <h2>Why accuracy was the wrong yardstick</h2>
+    <p>Only {{ facts.financial.bankrupt_rate | pct1 }} of the firms in the bankruptcy data failed. A model that says "safe" to every firm would be {{ derived.always_no_accuracy | pct1 }} accurate on our test set and would never catch a single bankruptcy. So the financial layer is judged on <b>recall</b> (how many failures it catches), <b>precision</b> (how many of its alarms are real), <b>F1</b> (the balance of the two) and <b>PR-AUC</b>.</p>
+    <p>The shipment data is the opposite: about {{ facts.operations.late_rate | pct0 }} of orders arrived late, so the classes are close to even. Accuracy means more there, but F1 and recall still tell you more about the cost of a miss.</p>
+
+    <div class="callout"><b>Looking back:</b> the Week 2 proposal also set a recall target for the financial layer. The final model doesn't reach it at the default threshold. That gap is discussed honestly on the <a href="07-results.html">results page</a> rather than quietly dropped.</div>
+
+    <h2>What changed because of it</h2>
+    <p>Every later choice traces back to this page: the separate pipelines, the metrics on every chart, the decision to treat the threshold as a business setting, and the console's two tabs for two audiences.</p>
+
+    <div class="links-pair">
+      <a class="btn sm" href="{{root}}reports/CEROP_Week2_Problem_and_Proposal.pdf">Read the Week 2 report (PDF)</a>
+      <a class="btn sm" href="{{root}}resources.html#notebooks">Notebooks start in Week 3</a>
+    </div>
+    <nav class="pager" aria-label="Journey pages">
+      <a class="next" href="02-data.html"><small>Next</small>Data &amp; exploration →</a>
+    </nav>
+  </article>
+</div>
+</main>
+{{> footer}}
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+{{> head}}
+<title>Data &amp; exploration · CEROP</title>
+<meta name="description" content="Week 3 of CEROP: three public datasets, two very different class balances, sentinel values hiding as clean data, and an early leakage warning.">
+</head>
+<body>
+{{> header}}
+<main id="main">
+<div class="wrap jhead">
+  <span class="eyebrow">Stage 02 · Week 3</span>
+  <h1>Data &amp; exploration</h1>
+  <p class="q">What do the datasets actually contain, and what will bite us later if we don't deal with it now?</p>
+</div>
+<div class="wrap jbody">
+  <aside>{{> journey-steps}}</aside>
+  <article class="prose">
+    <h2>Three public datasets</h2>
+    <div class="facts">
+      <div><div class="k">Taiwan bankruptcy firms</div><div class="v">{{ facts.financial.firms | int }}</div></div>
+      <div><div class="k">DataCo order lines (raw)</div><div class="v">{{ facts.operations.rows_before_cleaning | int }}</div></div>
+      <div><div class="k">GSCPI</div><div class="v">monthly</div></div>
+    </div>
+    <ul>
+      <li><b>Taiwanese Bankruptcy Prediction</b> (UCI). Financial ratios for firms listed in Taiwan, 1999 to 2009, with a bankrupt yes/no label.</li>
+      <li><b>DataCo Smart Supply Chain</b> (Mendeley Data). Order lines from a global retailer's shipments, with a late-delivery label.</li>
+      <li><b>Global Supply Chain Pressure Index</b> (Federal Reserve Bank of New York). One number per month for how stretched global supply chains were.</li>
+    </ul>
+
+    <h2>Two very different balances</h2>
+    <p>The first chart we made decided a lot. Bankruptcies are rare. Late shipments are common.</p>
+    <div class="chart" data-chart="imbalance" aria-busy="true"></div>
+    <p class="note">Counted from the label files in notebook 07 (<code>results/web/dataset_facts.json</code>).</p>
+
+    <h2>What we found</h2>
+    <h3>Sentinel values pretending to be clean data</h3>
+    <p>The bankruptcy data reported no missing values, which looked too good. Most ratios sit between 0 and 1, but some columns had maximums in the billions with minimums of zero. Those are placeholders for missing data, not real ratios. We sorted the affected columns by how much of each was damaged:</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Tier</th><th class="n">Features</th><th>Plan</th></tr></thead>
+        <tbody>
+          <tr><td>{{ report.t01.r1.c0 }}</td><td class="n">{{ report.t01.r1.c1 | int }}</td><td>{{ report.t02.r1.c2 }}</td></tr>
+          <tr><td>{{ report.t01.r2.c0 }}</td><td class="n">{{ report.t01.r2.c1 | int }}</td><td>{{ report.t02.r2.c2 }}</td></tr>
+          <tr><td>{{ report.t01.r3.c0 }}</td><td class="n">{{ report.t01.r3.c1 | int }}</td><td>{{ report.t02.r3.c2 }}</td></tr>
+        </tbody>
+        <caption>Source: Final Report Tables 1 and 2, extracted by <code>scripts/extract_report_tables.py</code>.</caption>
+      </table>
+    </div>
+    <p>None of the badly damaged columns were among the strongest predictors, so dropping them cost little.</p>
+
+    <h3>An early leakage warning</h3>
+    <p>In the shipment data, the column most correlated with lateness was <i>days for shipping (real)</i>: the number of days the shipment actually took. That's only known after delivery. A model trained on it would look excellent and be useless, because it would be reading the answer. It was flagged here and removed in Week 4, along with the delivery-status field. <i>Days for shipment (scheduled)</i> is known when the order is placed, so it stayed.</p>
+
+    <h3>An unreliable tail</h3>
+    <p>Plotting daily sales and profit over time showed a steady pattern until about September 2017, then sudden spikes and drops. That looks like a change in how data was collected, not a change in the business, so the tail was marked for removal.</p>
+
+    <h2>What changed because of it</h2>
+    <p>Week 4 got a concrete to-do list: tiered cleaning for the financial ratios, leakage columns out, outliers in profit fields clipped using training data only, and the post-September 2017 records removed.</p>
+
+    <div class="links-pair">
+      <a class="btn sm" href="https://github.com/arthunya/cerop/blob/main/notebooks/01_eda_combined.ipynb">View notebook 01</a>
+      <a class="btn sm" href="{{root}}reports/CEROP_Week3_Data_Exploration.pdf">Read the Week 3 report (PDF)</a>
+    </div>
+    <nav class="pager" aria-label="Journey pages">
+      <a href="01-problem.html"><small>Previous</small>← Framing the problem</a>
+      <a class="next" href="03-pipeline.html"><small>Next</small>Cleaning &amp; pipeline →</a>
+    </nav>
+  </article>
+</div>
+</main>
+{{> footer}}
+</body>
+</html>

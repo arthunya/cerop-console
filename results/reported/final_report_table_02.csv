@@ -1,0 +1,4 @@
+Tier,# Features,Action,Rationale
+Minor (< 2% affected),15,Capped at 99th percentile,Isolated data-entry errors; capping removes corrupted values without losing the feature
+Borderline (3.24% affected),1 (Interest-bearing debt interest rate),"Capped, same treatment as minor tier",Behaves closer to the minor tier than the severe one; worth keeping as a predictor
+Severe (18–88% affected),8,Dropped entirely,Too little reliable data left to justify imputing it
