@@ -28,8 +28,8 @@ export function useData(name) {
   return state;
 }
 
-export const SITE = "/cerop/";
-export const REPO = "https://github.com/arthunya/cerop";
+export const SITE = "/cerop-console/";
+export const REPO = "https://github.com/arthunya/cerop-console";
 export const NB = (file) => `${REPO}/blob/main/notebooks/${file}`;
 
 export const pct = (v, d = 1) => `${(v * 100).toFixed(d)}%`;

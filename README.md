@@ -2,7 +2,7 @@
 
 Two machine-learning models built side by side: one estimates whether a **supplier** may go bankrupt, the other whether a **shipment** will arrive late. Each score comes with a reason you can read.
 
-**[Project site](https://arthunya.github.io/cerop/)** · **[Live demo](https://arthunya.github.io/cerop/console/)** · **[Final report (PDF)](https://arthunya.github.io/cerop/reports/CEROP_Final_Report.pdf)** · [Deck](https://arthunya.github.io/cerop/deck/)
+**[Project site](https://arthunya.github.io/cerop-console/)** · **[Live demo](https://arthunya.github.io/cerop-console/console/)** · **[Final report (PDF)](https://arthunya.github.io/cerop-console/reports/CEROP_Final_Report.pdf)** · [Deck](https://arthunya.github.io/cerop-console/deck/)
 
 A graduate group project from AIT 506 Machine Learning at Westcliff University (summer 2026). It's a working prototype on public datasets, not a production system.
 
@@ -17,6 +17,8 @@ Held-out test sets: 1,364 firms (44 bankrupt) and 34,393 orders (18,854 late).
 | Operations | Random Forest (tuned) | 0.40 | 0.710 | **0.825** | **0.763** | 0.826 | 0.873 |
 
 Sources: `results/week6_financial_tuning_results.csv` (row "XGBoost - Week 5 published", the official figure) and `results/week6_operations_tuning_results.csv`. Calibrating the operations threshold from 0.50 to 0.40 catches 3,705 more late shipments and adds 4,200 false alarms (`results/week6_operations_confusion_matrices.csv`).
+
+The class report, the final presentation and this repo quote slightly different headline numbers. [The comparison page](https://arthunya.github.io/cerop-console/compare.html) lines them up and explains each difference.
 
 Two things worth knowing before you rerun anything:
 

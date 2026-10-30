@@ -1,0 +1,24 @@
+layer,metric,value,slide,note
+financial,f1,0.568,5,"XGBoost, Week 5 configuration"
+financial,recall,0.568,5,
+financial,precision,0.568,5,
+financial,tp,25,5,
+financial,fn,19,5,
+financial,fp,19,5,
+financial,tn,1301,5,
+operations,threshold,0.39,5,from 0.50
+operations,recall,0.849,5,
+operations,precision,0.694,5,
+operations,tp,16007,5,
+operations,fn,2847,5,
+operations,fp,7045,5,
+operations,tn,8494,5,
+operations,f1,0.764,6,
+financial,train,5455,4,
+financial,test,1364,4,
+financial,features,85,4,
+operations,rows_in,180519,4,
+operations,rows_after_cleaning,171962,4,
+operations,train,137569,4,
+operations,test,34393,4,
+operations,features,35,4,Week 4 processed features

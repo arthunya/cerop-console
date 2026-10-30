@@ -37,6 +37,6 @@
 
   const qr = document.getElementById("qr");
   if (qr && window.QRCode) {
-    new QRCode(qr, { text: "https://arthunya.github.io/cerop/console/", width: 180, height: 180, colorDark: "#0f172a", colorLight: "#ffffff" });
+    new QRCode(qr, { text: "https://arthunya.github.io/cerop-console/console/", width: 180, height: 180, colorDark: "#0f172a", colorLight: "#ffffff" });
   }
 })();

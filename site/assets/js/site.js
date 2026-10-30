@@ -34,7 +34,7 @@
   document.querySelectorAll(".jsteps a").forEach((a) => {
     if (here.endsWith(a.dataset.p)) a.setAttribute("aria-current", "page");
   });
-  const section = location.pathname.includes("/journey/") ? "journey" : location.pathname.endsWith("resources.html") ? "resources" : "";
+  const section = location.pathname.includes("/journey/") ? "journey" : location.pathname.endsWith("resources.html") ? "resources" : location.pathname.endsWith("compare.html") ? "compare" : "";
   document.querySelectorAll(`.nav a[data-section="${section}"]`).forEach((a) => a.classList.add("here"));
 
   // ---------- helpers ----------
@@ -201,6 +201,18 @@
     };
   }
 
+  // Compare charts: groups are metrics, one bar per source (report, presentation, repo).
+  function cmpChart(box, rows, label) {
+    const colors = S();
+    const series = rows.map((r, i) => ({ name: r.source, key: "v" + i, color: colors[i] }));
+    const groups = ["precision", "recall", "f1"].map((m) => {
+      const g = { name: m === "f1" ? "F1" : m[0].toUpperCase() + m.slice(1) };
+      rows.forEach((r, i) => { g["v" + i] = r[m]; });
+      return g;
+    });
+    groupedBars(box, { groups, series, label });
+  }
+
   // ---------- chart registry ----------
   const S = () => [css("--series-1"), css("--series-2"), css("--series-3")];
   const CHARTS = {
@@ -226,6 +238,8 @@
       groups: m.operations.week6.map((r) => ({ name: r.model.replace("Tuned RF at Calibrated Threshold", `Tuned RF at ${r.threshold.toFixed(2)}`).replace("Corrected Baseline RF", "Baseline RF"), recall: r.recall, precision: r.precision, f1: r.f1 })),
       series: [{ name: "Recall", key: "recall", color: S()[0] }, { name: "Precision", key: "precision", color: S()[1] }, { name: "F1", key: "f1", color: S()[2] }],
     }),
+    "cmp-fin": (box) => getJSON("comparison.json").then((c) => cmpChart(box, c.financial, "Financial XGBoost: precision, recall and F1 in the report, the presentation and this repo")),
+    "cmp-ops": (box) => getJSON("comparison.json").then((c) => cmpChart(box, c.operations, "Operations Random Forest: precision, recall and F1 in the report, the presentation and this repo")),
     "shap-global": (box) => getJSON("financial_shap_cases.json").then((s) => hBars(box, {
       label: "Average size of each feature's effect on the bankruptcy score, top ten",
       rows: s.global_mean_abs_shap.slice(0, 10).map((r) => ({ label: r.label, value: r.value * 100 })),
